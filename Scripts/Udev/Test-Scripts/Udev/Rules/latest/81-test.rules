@@ -1,0 +1,15 @@
+# start at sdb to ignore the system hard drive
+# this seems to not mount the usb
+KERNEL!="sd[b-z]*", GOTO="my_media_automount_end"
+
+#ACTION=="add" this is when a device is inserted
+#ATTR{partition}=="*" without this script runs several times 
+#ATTRS{idVendor}=="****", ATTRS{idProduct}=="****" any Vendor and any Product
+#RUN+="/usr/local/bin/my_script.sh" script to run 
+ACTION=="add", ATTR{partition}=="*", ATTRS{idVendor}=="****", ATTRS{idProduct}=="****", RUN+="/usr/local/bin/my_script.sh"
+
+#ACTION=="remove" this is when a device is removed
+ACTION=="remove" RUN+="/usr/local/bin/my_script_remove.sh"
+
+#go here first if sda if not run script 
+LABEL="my_media_automount_end"

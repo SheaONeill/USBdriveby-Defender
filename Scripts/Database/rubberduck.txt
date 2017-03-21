@@ -1,0 +1,16 @@
+idVendor           0x03eb Atmel Corp.
+  idProduct          0x2401 
+  bcdDevice            1.00
+  iManufacturer           1 ATMEL AVR
+  iProduct                2 HID Keyboard
+  iSerial                 0 
+  bNumConfigurations      1
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        0
+      bAlternateSetting       0
+      bNumEndpoints           1
+      bInterfaceClass         3 Human Interface Device
+      bInterfaceSubClass      0 No Subclass
+      bInterfaceProtocol      1 Keyboard

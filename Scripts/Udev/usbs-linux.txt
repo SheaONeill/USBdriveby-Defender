@@ -1,0 +1,94 @@
+1www.linux-usb.org/usb.ids
+
+Stage 1:
+Detect if a usb device is plugged in
+
+#!/bin/bash
+/usr/bin/gnome-terminal
+
+This seems to spawn 12 more terminals 13 altogether needs a fix
+http://stackoverflow.com/questions/19937584/udev-rule-runs-bash-script-multiple-times
+also need to sort PATH so full path to terminal not necessary
+---------------------------------------------------------------
+https://bbs.archlinux.org/viewtopic.php?id=170294
+XAuthority
+KERNEL=="card0", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/dan/.Xauthority", RUN+="/usr/local/bin/hotplug_monitor.sh"
+put it in script and see if it works?
+#! /usr/bin/bash
+
+export DISPLAY=:0
+export XAUTHORITY=/home/dan/.Xauthority
+
+still not working
+
+Another reason might be that udev seems to run in it's own environment. It's like you would run your program from a tty: It does start, but there's no xserver...
+
+However, this is pure speculation based on my own experiments. It would be nice if someone who knows udev better could confirm this.
+
+EDIT: add the following to your script:
+
+set -x
+xhost local:YOURUSERNAME
+export DISPLAY=:0.0
+
+-------------------------------------------------------------------
+https://ao2.it/en/blog/2016/10/01/capturing-screenshot-gdm-login-screen
+/run/user/0/gdm/Xauthority
+
+---------------------------------------------------------------
+If you want to run the script on a specific device, you can use the vendor and product ids
+
+    In /etc/udev/rules.d/test.rules:
+
+    ATTRS{idVendor}=="152d", ATTRS{idProduct}=="2329", RUN+="/tmp/test.sh"
+
+    in test.sh:
+
+
+http://superuser.com/questions/305723/using-udev-rules-to-run-a-script-on-usb-insertion
+
+If you also want to monitor remove events, you need to look for an environment variable named ID_SERIAL. It contains vendor and product ID separated by underscore:
+
+ACTION=="add|remove", SUBSYSTEM=="usb", ENV{ID_SERIAL}=="0763_019b" RUN+="/usr/bin/aconnect 20 128"
+
+finding unicodes for usb
+https://ubuntuforums.org/showthread.php?t=1648939
+
+dmesg list inserted devices
+lsusb list usb details
+
+
+http://unix.stackexchange.com/questions/65891/how-to-execute-a-shellscript-when-i-plug-in-a-usb-device
+
+To make this script work for any USB device which is connected change the rules file to this
+
+ACTION=="add", ATTRS{idVendor}=="****", ATTRS{idProduct}=="****", RUN+="/usr/local/my_script.sh"
+
+asterik(*) tells that this should be done for every USB device connected!
+
+http://weininger.net/how-to-write-udev-rules-for-usb-devices.html
+
+http://unix.stackexchange.com/questions/80882/udev-running-a-shellscript-that-accesses-an-x-display
+
+
+restart udev: sudo /etc/init.d/udev restart 
+scripts: /usr/local/bin/
+rules: /etc/udev/rules.d/
+
+superuser.com/questions/305723/using-udev-rules-to-run-a-script-on-usb-insertion
+https://www.freedesktop.org/software/systemd/man/hwdb.html
+-----------------------------------------------------------------------------------------
+
+http://www.reactivated.net/writing_udev_rules.html
+
+http://unix.stackexchange.com/questions/28548/how-to-run-custom-scripts-upon-usb-device-plug-in
+
+to do lauch terminal with menu
+http://unix.stackexchange.com/questions/1596/can-i-launch-a-graphical-program-on-another-users-desktop-as-root
+
+-----------------------------------------------------------------------------------------------------
+
+kali linux shell script to take a picture
+http://unix.stackexchange.com/questions/289476/taking-a-picture-with-a-laptop-webcam-after-entering-an-incorrect-password
+=================================================================================================
+http://eromang.zataz.com/2010/11/29/metasploit-meterpreter-webcam_list-webcam_snap-record_mic/
