@@ -1,1 +1,0 @@
-ACTION=="add", ATTRS{idVendor}=="****", ATTRS{idProduct}=="****", RUN+="/usr/local/bin/my_script.sh"
