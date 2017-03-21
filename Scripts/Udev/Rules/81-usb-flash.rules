@@ -7,9 +7,11 @@ KERNEL!="sd[b-z]*", GOTO="my_media_automount_end"
 #ATTRS{idVendor}=="****", ATTRS{idProduct}=="****" any Vendor and any Product
 #RUN+="/usr/local/bin/my_script.sh" script to run 
 ACTION=="add", ATTR{partition}=="*", ATTRS{idVendor}=="****", ATTRS{idProduct}=="****", RUN+="/usr/local/bin/my_script.sh"
-
+#
+#
 #ACTION=="remove" this is when a device is removed
-ACTION=="remove" RUN+="/usr/local/bin/my_script_remove.sh"
-
-#go here first if sda if not run script 
+ACTION=="remove", RUN+="/usr/local/bin/my_script_remove.sh"
+#
+#
+#go here first if sda if anything else sdb-z run script 
 LABEL="my_media_automount_end"
