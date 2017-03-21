@@ -21,5 +21,5 @@ export XAUTHORITY=/root/.Xauthority
 su root -c 'zenity --notification --text="Device Inserted!"'
 #
 #open a terminal as root and display a menu script
-su root -c 'gnome-terminal -e "bash -c ./usr/local/bin/dialog-menu.sh;bash" &' 
+su root -c 'gnome-terminal -e "bash -c .//usr/local/bin/dialog-menu.sh;bash" &' 
 
