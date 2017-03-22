@@ -30,11 +30,11 @@ Currently known Drive-by USB Attacks/Vulnerabilities
 # MENU EXAMPLE:
 
 You must read terms and agreements before any other action.
-1. View Files (allow attacker to view-only the files on the device) (chmod/chroot/chown)
-2. Run (allow execution of script(not-really) needs passphrase)
-3. Format (format the device) needs passphrase)
-4. Eject (safely remove device (walk-away clause))
-5. Exit (exit this menu – needs passphrase)
+* View Files (allow attacker to view-only the files on the device) (chmod/chroot/chown)
+* Run (allow execution of script(not-really) needs passphrase)
+* Format (format the device) needs passphrase)
+* Eject (safely remove device (walk-away clause))
+* Exit (exit this menu – needs passphrase)
 * T. Terms and Agreements
 
 Should any menu item selected that needs a passphrase an “Are you sure you want to continue (Y/N)” message will display.  Note: This Will Be Looking for A Passphrase E.G. MySecretPassPhrase as the script sequence has already been initiated (as pointed out/described in terms and agreements (past the point of no return))
