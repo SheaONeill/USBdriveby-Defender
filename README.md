@@ -55,5 +55,6 @@ Send the attacker elsewhere for instance honeypot with so-called confidential/ot
 Create an automated script to run on attacker device that will send tracking information to admins should attacker move onto another machine or should attacker insert in his own machine to try a figure out what went wrong with his attack.
 Read keyboard character speed to differentiate between automated input  and human interaction.   
 
+# INSTALLING
 
 *Work in Progress*
