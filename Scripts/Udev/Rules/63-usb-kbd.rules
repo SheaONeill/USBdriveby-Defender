@@ -3,10 +3,10 @@ SUBSYSTEM!="input", GOTO="xorg_xkb_end"
 KERNEL!="event*", GOTO="xorg_xkb_end"
 
 #added by me
-RUN+="/usr/local/bin/my_script.sh"
+RUN+="/usr/local/bin/usb_keyboard_udev.sh"
 
 # import keyboard layout from /etc/default/keyboard
 ENV{ID_INPUT_KEY}=="?*", IMPORT{file}="/etc/default/keyboard"
 
 LABEL="xorg_xkb_end"
-ACTION=="remove", RUN+="/usr/local/bin/my_script_remove.sh"
+ACTION=="remove", ENV{DEVTYPE}=="usb_device", RUN+="/usr/local/bin/usb_keyboard_remove.sh"
