@@ -1,5 +1,5 @@
 # USBdriveby-Defender
-SheaONeill (https://github.com/SheaONeill) [PaddyOTG] 
+[SheaONeill] Shea.ie [PaddyOTG] 
 
 # OVERVIEW
 
