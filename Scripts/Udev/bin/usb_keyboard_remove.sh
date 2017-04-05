@@ -1,10 +1,17 @@
 #!/bin/bash
-echo "Capture Remove Keyboard Device Success!"> ~/Desktop/usb_keyboard_device_removed
 #
-#export display
-export DISPLAY=":0"
-export XAUTHORITY=/root/.Xauthority
+# USB Driveby Defender
 #
-#open a terminal and run usb_keyboard_post_remove.sh script
-su root -c 'gnome-terminal -e "bash -c ./usr/local/bin/usb_keyboard_post_remove.sh;bash" &'
+#
+#---------------------
+
+#set the log path variable
+LOG_PATH="/var/log/driveby_defender/"
+echo "Capture Remove Device Success!"> ${LOG_PATH}keyboard_details.log
+while [ -f "${LOG_PATH}keyboard_details.log" ]; do
+    #time its always good to wait
+    sleep 1
+    #
+    /bin/rm ${LOG_PATH}keyboard_details.log
+done
 

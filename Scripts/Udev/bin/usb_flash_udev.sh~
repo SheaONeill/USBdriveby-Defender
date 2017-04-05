@@ -12,7 +12,7 @@ while [ ! -f "${LOG_PATH}flash_details.log" ]; do
     sleep 1
     #
     #get idVendor details and output to log
-    /bin/dmesg | grep idVendor | tail -n1 >> ${LOG_PATH}flash_details.log
+    /bin/dmesg | grep idVendor | tail -n1 > ${LOG_PATH}flash_details.log
 done
     #
     #call usb_flash.sh
