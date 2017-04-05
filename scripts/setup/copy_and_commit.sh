@@ -39,12 +39,12 @@ echo
 ls ${GIT_REPO_PATH}${GIT_REPO_SETUP_PATH}setup/
 #
 #test
-echo -e "\nCopying ${BASHRC_PATH}  to ${GIT_REPO_PATH}"
+echo -e "\nCopying ${BASHRC_PATH}  to ${GIT_REPO_PATH}${GIT_REPO_SETUP_PATH}"
 echo "press ENTER to continue"; read a
 #copy scripts from local to git
-cp "${BASHRC_PATH}" ${GIT_REPO_PATH}
+cp "${BASHRC_PATH}" ${GIT_REPO_PATH}${GIT_REPO_SETUP_PATH}
 echo
-ls -a ${GIT_REPO_PATH}
+ls -a ${GIT_REPO_PATH}${GIT_REPO_SETUP_PATH}
 #
 #git pull origin master
 echo  -e "\nChanging Directory"
