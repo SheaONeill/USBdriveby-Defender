@@ -4,9 +4,9 @@
 #
 #
 #---------------------
-GET_SETUP_PATH="$(dirname "$0")"
+GET_SETUP_PATH="$(pwd)"
 echo "GET_SETUP_PATH: ${GET_SETUP_PATH}"
-PARENTDIR="$(dirname "${GET_SETUP_PATH}")"
+PARENTDIR="$(dirname "${GET_SETUP_PATH}")/"
 echo "PARENTDIR: ${PARENTDIR}"
 read a
 LOCAL_BIN_PATH="/usr/local/bin/"
@@ -22,7 +22,7 @@ rules_setup () {
     echo -e "\nPaths To: Local Rules:${LOCAL_RULES_PATH} \nLocal Bin  ${LOCAL_BIN_PATH} \n.bashrc: ${BASHRC_PATH}"
     echo -e "\nPaths From: Rules:${SETUP_RULES_PATH} \nLocal Bin  ${SETUP_BIN_PATH} \n.bashrc: ${PARENTDIR}"
     ls  ${SETUP_RULES_PATH} ;ls ${SETUP_BIN_PATH};ls ${PARENTDIR}
-    echo "Copying ${SETUP_RULES_PATH}*.rules to ${GIT_REPO_PATH}${GIT_REPO_RULES_PATH}"
+    echo "Copying ${SETUP_RULES_PATH}* to ${LOCAL_RULES_PATH}}"
     echo "press ENTER to continue"; read a
     cp "${SETUP_RULES_PATH}"* ${LOCAL_RULES_PATH}
     ls -la ${LOCAL_RULES_PATH}
@@ -39,9 +39,9 @@ copy_scripts () {
     cp "${SETUP_BIN_PATH}"*  ${LOCAL_BIN_PATH}
     ls -la ${LOCAL_BIN_PATH}
     #maybe edit this to append text to .bashrc
-    cp ${PARENTDIR}.bascrc $HOME
+    cp ${PARENTDIR}.bashrc $HOME
     chmod +x "${LOCAL_BIN_PATH}"*
-    ls -la /usr/local/bin/
+    ls -la "${LOCAL_BIN_PATH}"
 }
 
 #setup database function
