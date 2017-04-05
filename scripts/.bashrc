@@ -109,12 +109,18 @@ if ! shopt -oq posix; then
   fi
 fi
 #--------------------------------------------------------------------------------------
+#
+# USB Driveby Defender
+#
+#
+#---------------------
+
 # note
 # we could always create a new file bash_driveby_defender
 if [ -f ~/.bash_driveby_defender ]; then
     . ~/.bash_driveby_defender
 fi
-#added by me
+#check  values when shells are executed
 echo "In .bashrc Now!"
 #
 #check if keyboard is inserted

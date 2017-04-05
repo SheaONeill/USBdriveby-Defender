@@ -8,7 +8,6 @@
 #set the log path variable
 LOG_PATH="/var/log/driveby_defender/"
 lim=.003300000
-#
 
 #call function from external script
 source /usr/local/bin/get_char.sh
@@ -32,8 +31,7 @@ while read_char input_char; do
     
     fi
     
-    
-    
+    #test    
     #echo input_char value
     echo "got $input_char"
     echo "char value is: ${input_char}"
