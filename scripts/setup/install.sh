@@ -40,6 +40,7 @@ copy_scripts () {
     ls -la ${LOCAL_BIN_PATH}
     #maybe edit this to append text to .bashrc
     cp ${PARENTDIR}.bashrc $HOME
+    ls -la $HOME
     chmod +x "${LOCAL_BIN_PATH}"*
     ls -la "${LOCAL_BIN_PATH}"
 }
