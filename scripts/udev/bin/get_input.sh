@@ -53,6 +53,7 @@ while read_char input_char; do
 	#contact admin
 	#take photo
 	#upload captured details to server in case system gets compromised
+	#run a check on all opened ports and shut them down where applicable
 	#check captured commands and compare against known scripts
 	#lock down
 	#
