@@ -14,6 +14,9 @@ while [ ! -f ${LOG_PATH}keyboard_details.log ]; do
     #
     #get idVendor details and output to file dmesg_result
     /bin/dmesg | grep idVendor | tail -n1 >> ${LOG_PATH}keyboard_details.log
+    #
+    #set flag
+    echo 1 > ${LOG_PATH}keyboard_flag
 echo "done"
 done
 echo "Done Here! $0">> ${LOG_PATH}keyboard_details.log

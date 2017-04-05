@@ -108,20 +108,28 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
+#--------------------------------------------------------------------------------------
+# note
+# we could always create a new file bash_driveby_defender
+if [ -f ~/.bash_driveby_defender ]; then
+    . ~/.bash_driveby_defender
+fi
 #added by me
 echo "In .bashrc Now!"
 #
 #check if keyboard is inserted
 #setlog path variable
 LOG_PATH="/var/log/driveby_defender/"
+#need to change this to to check if keyboard_flag is set to 0 or 1
 if [ -f ${LOG_PATH}keyboard_details.log ]; then
 	echo "A Keyboard Device has been Detected!"
 /usr/local/bin/get_input.sh
-
+#
+#need to change this to to check if flash_flag is set to 0 or 1
 elif [ -f ${LOG_PATH}flash_details.log ] ; then
 	echo "A Flash Device has been Detected!"
 /usr/local/bin/get_input.sh
 else
 	echo "No Device has been Detected!"
 fi
+#--------------------------------------------------------------------------------------

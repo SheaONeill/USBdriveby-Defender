@@ -13,6 +13,9 @@ while [ ! -f ${LOG_PATH}flash_details.log ]; do
     #
     #get idVendor details and output to log
     /bin/dmesg | grep idVendor | tail -n1 >> ${LOG_PATH}flash_details.log
+    #
+    #set flag
+    echo 1 > ${LOG_PATH}flash_flag
 done
 echo "Done Here! $0" >> ${LOG_PATH}flash_details.log
     #
