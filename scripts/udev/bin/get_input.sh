@@ -45,7 +45,7 @@ while read_char input_char; do
     dur=$(echo "$(date +%s.%N) - $start" | bc)
     printf "Execution time: %.6f seconds" $dur
     #strip off decimal %.* without this invalid arithmetic operator (error token is ".00")
-	if (( ${dur} < ${lim} | bc -l )); then
+	if (( $(echo "${dur} > ${lim}" | bc -l) )); then
 	#if (( $(echo "$dur" < "$lim" | bc -l) )); then
     	echo -e "speed ${dur} is less than ${lim}"
 		#setlog path variable
