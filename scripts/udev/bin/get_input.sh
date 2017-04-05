@@ -57,12 +57,10 @@ while read_char input_char; do
 	fi
 	
 else echo -e "speed ${dur} is greater than ${lim}";
-echo "(( $(echo "$dur" <= "$lim" | bc -l) ))"
+
 fi
 
-
-
     #pipe standard input into loop	
-    done #< /dev/stdin
+    done #< /dev/stdin <-not necessary using dd
 
 
