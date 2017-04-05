@@ -1,9 +1,31 @@
 #!/bin/bash
+#
+# USB Driveby Defender
+#
+#
+#---------------------
+GET_SETUP_PATH="$(dirname "$0")"
+echo $GET_SETUP_PATH
+PARENTDIR="$(dirname "${GET_SETUP_PATH}")"
+echo $PARENTDIR
+read a
+LOCAL_BIN_PATH="/usr/local/bin/"
+LOCAL_RULES_PATH="/etc/udev/rules.d/"
+BASHRC_PATH="$HOME/.bashrc"
+SETUP_RULES_PATH="${PARENTDIR}/udev/rules/"
+SETUP_BIN_PATH="${PARENTDIR}/udev/bin/"
+echo $SETUP_RULES_PATH
+
 
 #copy rules to udev directory
 rules_setup () {
-    cp {63-usb-kbd.rules,81-usb-flash.rules} /etc/udev/rules.d/
-    ls -la /etc/udev/rules.d/
+    echo -e "\nPaths To: Local Rules:${LOCAL_RULES_PATH} \nLocal Bin  ${LOCAL_BIN_PATH} \n.bashrc: ${BASHRC_PATH}"
+    echo -e "\nPaths From: Rules:${SETUP_RULES_PATH} \nLocal Bin  ${SETUP_BIN_PATH} \n.bashrc: ${PARENTDIR}"
+    ls  ${SETUP_RULES_PATH} ;ls ${SETUP_BIN_PATH};ls ${PARENTDIR}
+    echo "Copying ${SETUP_RULES_PATH}*.rules to ${GIT_REPO_PATH}${GIT_REPO_RULES_PATH}"
+    echo "press ENTER to continue"; read a
+    cp {63-usb-kbd.rules,81-usb-flash.rules} ${GIT_REPO_RULES_PATH}
+    ls -la ${GIT_REPO_RULES_PATH}
     #reload rules: 
     udevadm control --reload-rules
 }

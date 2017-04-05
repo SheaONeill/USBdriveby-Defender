@@ -9,9 +9,9 @@
 LOCAL_BIN_PATH="/usr/local/bin/"
 LOCAL_RULES_PATH="/etc/udev/rules.d/"
 GIT_REPO_PATH="/media/root/DATA/Dropbox/Year_3/Semester_2/Project/Github_Local-Repo/"
-GIT_REPO_RULES_PATH="Scripts/Udev/Rules/ "
-GIT_REPO_BIN_PATH="Scripts/Udev/bin/ "
-GIT_REPO_SETUP_PATH="Scripts/"
+GIT_REPO_RULES_PATH="scripts/udev/rules/ "
+GIT_REPO_BIN_PATH="scripts/udev/bin/ "
+GIT_REPO_SETUP_PATH="scripts/"
 BASHRC_PATH="$HOME/.bashrc"
 #test
 echo -e "\nPaths: Local :${LOCAL_RULES_PATH} \nGit  ${GIT_REPO_PATH} \nGit Rules: ${GIT_REPO_RULES_PATH}"
@@ -31,12 +31,12 @@ echo
 ls ${GIT_REPO_PATH}${GIT_REPO_BIN_PATH}
 #
 #test
-echo -e "\nCopying ${LOCAL_BIN_PATH}Setup/  to ${GIT_REPO_PATH}${GIT_REPO_SETUP_PATH}"
+echo -e "\nCopying ${LOCAL_BIN_PATH}setup/  to ${GIT_REPO_PATH}${GIT_REPO_SETUP_PATH}"
 echo "press ENTER to continue"; read a
 #copy setup scripts from local to git
-cp  -r "${LOCAL_BIN_PATH}Setup/" ${GIT_REPO_PATH}${GIT_REPO_SETUP_PATH}
+cp  -r "${LOCAL_BIN_PATH}setup/" ${GIT_REPO_PATH}${GIT_REPO_SETUP_PATH}
 echo
-ls ${GIT_REPO_PATH}Setup/
+ls ${GIT_REPO_PATH}${GIT_REPO_SETUP_PATH}setup/
 #
 #test
 echo -e "\nCopying ${BASHRC_PATH}  to ${GIT_REPO_PATH}"
