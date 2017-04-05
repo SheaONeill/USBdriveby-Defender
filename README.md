@@ -58,3 +58,17 @@ Read keyboard character speed to differentiate between automated input  and huma
 # INSTALLING
 
 *Work in Progress*
+
+# CHANGES
+
+ATM this code is not fully functional as of yet, read the comments in the scripts for details
+while concentrating on all keyboard input, after researhing known  BAD USB/Rubber Duckky linux/unix attacks,
+which seem to stem from <alt> <f2> or <ctrl><alt><t> a decision was made to concentrate
+on any shell thats opened should run a check for if  a flag was set for flash or keyboard emulator
+if flag was set then run specific script  (see bashrc for details), the script called will gauge human vs non human input speed
+and log all stdin for later analysation, then (TODO alert admin,take photo of attacker if possible and any other security measures
+necessary for instance system lockdown.. system audible beeps to attract attention to breach etc...)
+this is our focus at the moment 
+shoud checks assume its human  then script exits then (TODO recall commands and execute)
+to be continued............
+ 
