@@ -5,9 +5,9 @@
 #
 #---------------------
 GET_SETUP_PATH="$(dirname "$0")"
-echo $GET_SETUP_PATH
+echo "GET_SETUP_PATH: ${GET_SETUP_PATH}"
 PARENTDIR="$(dirname "${GET_SETUP_PATH}")"
-echo $PARENTDIR
+echo "PARENTDIR: ${PARENTDIR}"
 read a
 LOCAL_BIN_PATH="/usr/local/bin/"
 LOCAL_RULES_PATH="/etc/udev/rules.d/"
@@ -24,19 +24,23 @@ rules_setup () {
     ls  ${SETUP_RULES_PATH} ;ls ${SETUP_BIN_PATH};ls ${PARENTDIR}
     echo "Copying ${SETUP_RULES_PATH}*.rules to ${GIT_REPO_PATH}${GIT_REPO_RULES_PATH}"
     echo "press ENTER to continue"; read a
-    cp {63-usb-kbd.rules,81-usb-flash.rules} ${GIT_REPO_RULES_PATH}
-    ls -la ${GIT_REPO_RULES_PATH}
+    cp "${SETUP_RULES_PATH}"* ${LOCAL_RULES_PATH}
+    ls -la ${LOCAL_RULES_PATH}
     #reload rules: 
     udevadm control --reload-rules
 }
 
 #copy scripts to /usr/local/bin/
 copy_scripts () {
-    #need to change this to $0 
-    cp {usb_flash_udev.sh,usb_keyboard_udev.sh,usb_flash_.sh,usb_flash_remove.sh,usb_keyboard_remove.sh} /usr/local/bin/
-    cp {get_input.sh,get_char.sh} /usr/local/bin/
-    cp {.bascrc} $HOME
-    chmod +x /usr/local/bin/*
+    #test
+    echo -e "\nCopying ${SETUP_BIN_PATH}*.sh to ${LOCAL_BIN_PATH}"
+    echo "press ENTER to continue"; read a
+    #copy all bin scripts from setup to local
+    cp "${SETUP_BIN_PATH}"*  ${LOCAL_BIN_PATH}
+    ls -la ${LOCAL_BIN_PATH}
+    #maybe edit this to append text to .bashrc
+    cp ${PARENTDIR}.bascrc $HOME
+    chmod +x "${LOCAL_BIN_PATH}"*
     ls -la /usr/local/bin/
 }
 
