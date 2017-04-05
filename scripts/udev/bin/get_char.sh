@@ -23,5 +23,6 @@ check_enter_key () {
         then newline=true
     fi
 	}
+	#
 
 

@@ -50,9 +50,8 @@ while read_char input_char; do
     	echo -e "speed ${dur} is less than ${lim}"
     	echo -e "\nNon Human Detected!"
 		if [ -f ${LOG_PATH}keyboard_flag ]; then
-			echo "resetting keyboard_flag"
-			echo -e "\nPress any key"; read a
-			#set flag to 0 (human)
+			echo "resetting keyboard_flag to 1"
+			#set flag to 1 (non-human)
 			echo 1 > ${LOG_PATH}keyboard_flag
 		else
 		echo -e "\nno keyboard_flag file found"	

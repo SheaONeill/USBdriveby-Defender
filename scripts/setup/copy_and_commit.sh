@@ -57,5 +57,5 @@ echo -e "\nEnter Commit Message now!"; read commit_message
 echo -e "\nCommit Message : ${commit_message}"; git commit -m "${commit_message}"
 echo -e "\nChecking status...."; git status
 echo -e "\nPushing files to remote now!"; git push origin master
-
+#
 

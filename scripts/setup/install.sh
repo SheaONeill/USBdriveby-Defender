@@ -4,6 +4,7 @@
 #
 #
 #---------------------
+
 GET_SETUP_PATH="$(pwd)"
 echo "GET_SETUP_PATH: ${GET_SETUP_PATH}"
 PARENTDIR="$(dirname "${GET_SETUP_PATH}")/"

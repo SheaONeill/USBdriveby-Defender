@@ -120,6 +120,7 @@ fi
 if [ -f ~/.bash_driveby_defender ]; then
     . ~/.bash_driveby_defender
 fi
+#
 #check  values when shells are executed
 echo "In .bashrc Now!"
 #
