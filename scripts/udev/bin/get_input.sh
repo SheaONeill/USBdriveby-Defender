@@ -47,6 +47,20 @@ while read_char input_char; do
     #red:http://stackoverflow.com/questions/15224581/floating-point-comparison-with-variable-in-bash
 	if (( $(echo "${dur} < ${lim}" | bc -l) )); then
 	#if (( $(echo "$dur" < "$lim" | bc -l) )); then
+	#
+	#this is where alerts happen (a function from another scirpt can be called here
+	#or just call script itself (choices choices)
+	#contact admin
+	#take photo
+	#upload captured details to server in case system gets compromised
+	#check captured commands and compare against known scripts
+	#lock down
+	#
+	##this will lock the screen on gnome (more research for other desktops eg KDE)
+    #uncomment this next line
+    #checkout dbus.freegesktop.org for dbus specs (interprocess communication)
+    #dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
+	#
     	echo -e "speed ${dur} is less than ${lim}"
     	echo -e "\nNon Human Detected!"
 		if [ -f ${LOG_PATH}keyboard_flag ]; then
