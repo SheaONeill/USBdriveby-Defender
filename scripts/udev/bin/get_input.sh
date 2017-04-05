@@ -7,7 +7,7 @@
 
 #set the log path variable
 LOG_PATH="/var/log/driveby_defender/"
-lim=0.0042122
+lim=.003300000
 #
 
 #call function from external script
@@ -45,18 +45,21 @@ while read_char input_char; do
     dur=$(echo "$(date +%s.%N) - $start" | bc)
     printf "Execution time: %.6f seconds" $dur
     #strip off decimal %.* without this invalid arithmetic operator (error token is ".00")
-	if (( $(echo "$dur" > "$lim" | bc -l) )); then
-    	echo -e "speed is less than 0"
+	if (( ${dur} < ${lim} | bc -l )); then
+	#if (( $(echo "$dur" < "$lim" | bc -l) )); then
+    	echo -e "speed ${dur} is less than ${lim}"
 		#setlog path variable
 		LOG_PATH="/var/log/driveby_defender/"
 		if [ -f ${LOG_PATH}keyboard.log ]; then
 			echo "removing keyboard.log"
+			echo -e "\nPress any key"; read a
 			rm ${LOG_PATH}keyboard.log
 		else
-		echo "no keyboard.log file found"	
+		echo -e "\nno keyboard.log file found"	
 	fi
 	
-else echo -e "speed is greater than 0";
+else echo -e "speed ${dur} is greater than ${lim}";
+echo "(( $(echo "$dur" <= "$lim" | bc -l) ))"
 fi
 
 
