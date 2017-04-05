@@ -3,7 +3,7 @@ SUBSYSTEM!="input", GOTO="xorg_xkb_end"
 KERNEL!="event*", GOTO="xorg_xkb_end"
 
 #added by me
-RUN+="/usr/local/bin/usb_flash_udev.sh"
+RUN+="/usr/local/bin/usb_keyboard_udev.sh"
 
 # import keyboard layout from /etc/default/keyboard
 ENV{ID_INPUT_KEY}=="?*", IMPORT{file}="/etc/default/keyboard"

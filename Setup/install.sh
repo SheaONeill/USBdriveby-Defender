@@ -11,7 +11,9 @@ rules_setup () {
 #copy scripts to /usr/local/bin/
 copy_scripts () {
     #need to change this to $0 
-    cp {keyboard,keyboard_udev,dialog-menu} /usr/local/bin/
+    cp {usb_flash_udev.sh,usb_keyboard_udev.sh,usb_flash_.sh,usb_flash_remove.sh,usb_keyboard_remove.sh} /usr/local/bin/
+    cp {get_input.sh,get_char.sh} /usr/local/bin/
+    cp {.bascrc} $HOME
     chmod +x /usr/local/bin/*
     ls -la /usr/local/bin/
 }

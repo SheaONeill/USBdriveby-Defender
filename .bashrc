@@ -117,11 +117,11 @@ echo "In .bashrc Now!"
 LOG_PATH="/var/log/driveby_defender/"
 if [ -f ${LOG_PATH}keyboard_details.log ]; then
 	echo "A Keyboard Device has been Detected!"
-/usr/local/bin/get_input_key.sh
+/usr/local/bin/get_input.sh
 
 elif [ -f ${LOG_PATH}flash_details.log ] ; then
 	echo "A Flash Device has been Detected!"
-/usr/local/bin/get_input_flash.sh
+/usr/local/bin/get_input.sh
 else
 	echo "No Device has been Detected!"
 fi
