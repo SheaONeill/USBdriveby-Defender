@@ -62,7 +62,7 @@ Read keyboard character speed to differentiate between automated input  and huma
 Downlod ZIP file, UNZIP, navigate to setup directory, make install.sh executable: `chmod +x install.sh`
 execute install.sh `./install.sh` and follow instrucions.  
 The database script expects four arguments `$host $dbname $name $pass`
-e.g. `<ip-address>or<localhost> <database_name> <name> <pass>` localhost defender root toor etc.
+  e.g. `<ip-address>or<localhost> <database_name> <name> <pass>` localhost defender root toor etc.
 
 # CHANGELOG
 
