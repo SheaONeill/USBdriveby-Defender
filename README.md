@@ -59,10 +59,14 @@ Read keyboard character speed to differentiate between automated input  and huma
 # INSTALLING
 
 *Work in Progress*
+Downlod ZIP file, UNZIP, navigate to setup directory, make install.sh executable: `chmod +x install.sh`
+execute install.sh `./install.sh` and follow instrucions.
+the database script expect four arguments `$host $dbname $name $pass`
+e.g. `<ip-address>or<localhost> <database_name> <name> <pass>` localhost defender root toor etc.
 
-# CHANGES
+# CHANGELOG
 
-ATM this code is not fully functional as of yet, read the comments in the scripts for details
+This code is not fully functional as of yet, read the comments in the scripts for details
 while concentrating on all keyboard input, after researhing known  BAD USB/Rubber Duckky linux/unix attacks,
 which seem to stem from `<alt> <f2> or <ctrl><alt><t>` which in a nutshell opens a terminal or 
 xterm and runs commands. 
