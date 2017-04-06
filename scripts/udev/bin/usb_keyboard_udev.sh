@@ -20,6 +20,9 @@ while [ ! -f ${LOG_PATH}keyboard_details.log ]; do
 echo "done"
 done
 echo "Done Here! $0">> ${LOG_PATH}keyboard_details.log
+
+    #test this will unbind keyboard immediatley
+    # /usr/local/bin/unbind_device.sh
 exit 0
 
 

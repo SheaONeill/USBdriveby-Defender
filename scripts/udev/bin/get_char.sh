@@ -11,7 +11,7 @@ read_char () {
 	#ref: https://www.peterbe.com/plog/carriage-return-in-bash
 	input_char=$(dd count=1 2>/dev/null; echo .)
 	## Remove the period 	       
-	input_char=${input_char%?} 
+	input_char=${input_char%?} 	   
 	#call check function
     check_enter_key 
 	stty icanon echo

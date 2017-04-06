@@ -49,7 +49,7 @@ while read_char input_char; do
 	#
 	#unbind device
 	#/usr/local/bin/unbind
-	#
+	
 	#this is where alerts happen (a function from another scirpt can be called here
 	#or just call script itself (choices choices)
 	#contact admin
