@@ -39,12 +39,12 @@ while read_char input_char; do
 
 
 
-    #ref:http://stackoverflow.com/questions/385408/get-program-execution-time-in-the-shell
+    #ref: http://stackoverflow.com/questions/385408/get-program-execution-time-in-the-shell
     #note this is speed of single character not full word
     #need to check after enter signal is confirmed and then calculate
     dur=$(echo "$(date +%s.%N) - $start" | bc)
     printf "Execution time: %.6f seconds" $dur
-    #red:http://stackoverflow.com/questions/15224581/floating-point-comparison-with-variable-in-bash
+    #ref :http://stackoverflow.com/questions/15224581/floating-point-comparison-with-variable-in-bash
 	if (( $(echo "${dur} < ${lim}" | bc -l) )); then
 	#if (( $(echo "$dur" < "$lim" | bc -l) )); then
 	#
@@ -58,8 +58,8 @@ while read_char input_char; do
 	#lock down
 	#
 	##this will lock the screen on gnome (more research for other desktops eg KDE)
-    #uncomment this next line
     #checkout dbus.freegesktop.org for dbus specs (interprocess communication)
+    #uncomment this next line
     #dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
 	#
     	echo -e "speed ${dur} is less than ${lim}"
