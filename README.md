@@ -62,7 +62,9 @@ Read keyboard character speed to differentiate between automated input  and huma
 Downlod ZIP file, UNZIP, navigate to setup directory, make install.sh executable: `chmod +x install.sh`
 execute install.sh `./install.sh` and follow instrucions.  
 The database script expects four arguments `$host $dbname $name $pass` <br />
-e.g. `<ip-address>or<localhost> <database_name> <name> <pass>` localhost defender hackme letmein etc.
+e.g. `<ip-address>or<localhost> <database_name> <name> <pass>` localhost defender hackme letmein etc.<br />
+host must be accurate all other values will be created and db grant permissions will accomadate.<br />
+(TODO give option to install bc if not found)
 
 # CHANGELOG
 
@@ -76,5 +78,6 @@ and log all stdin for later analysation, then (TODO alert admin,take photo of at
 necessary for instance system lockdown.. system audible beeps to attract attention to breach etc...)
 this is our focus at the moment  <br />
 Should it be the case that checks assume its human  then the script exits then (TODO recall commands and execute) <br />
-to be continued............
+to be continued............ <br />
+
  
