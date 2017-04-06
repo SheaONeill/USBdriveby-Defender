@@ -66,9 +66,9 @@ e.g. `<ip-address>or<localhost> <database_name> <name> <pass>` localhost defende
 
 # CHANGELOG
 
-This code is not fully functional as of yet, read the comments in the scripts for details
-while concentrating on all keyboard input, after researhing known  BAD USB/Rubber Duckky linux/unix attacks,
-which seem to stem from `<alt> <f2> or <ctrl><alt><t>` which in a nutshell opens a terminal or 
+This code is not fully functional as of yet, read the comments in the scripts for details. <br />
+While concentrating on all keyboard input, and after researhing known  BAD USB/Rubber Duckky linux/unix attacks,
+Our finding where that attacks seem to stem from `<alt> <f2> or <ctrl><alt><t>` which in a nutshell opens a terminal or 
 xterm and runs commands. 
 So a decision was made to concentrate on: any shell thats opened should run a check for if  a flag was set for flash or keyboard emulator
 if flag was set then run specific script  (see bashrc for details), the script called will gauge human vs non human input speed
