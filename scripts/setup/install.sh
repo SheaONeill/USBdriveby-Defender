@@ -64,7 +64,32 @@ get_db_details () {
     echo -en "password: "
     read pass    
 }
+
+#get dependencies 
+check_dependencies () {
+    #check if bc is installed
+    #ref: http://stackoverflow.com/a/592649
+    if which bc >/dev/null; then echo "bc is already installed............."
+    else
+    #install bc and wait until complete before continuing
+    #ref: http://unix.stackexchange.com/a/269276
+    gnome-terminal -e 'bash -c "sudo apt-get update && sudo apt-get install bc"' & wait $!
+    #test
+    echo -e "\nPID of last command: $!"
+    
+        #re-check if bc is installed
+        if which bc >/dev/null; then echo "dependency bc installed"
+        else echo >&2 "Something went wrong!"; 
+        #recall function
+        check_dependencies
+        fi
+    fi
+echo "Press Enter to continue";read a
+}
+
  main () {
+     #call check_dependencies function
+     check_dependencies
      #call rules_setup function
      rules_setup
      #call copy_scripts function
