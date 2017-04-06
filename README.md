@@ -41,7 +41,7 @@ Should any menu item selected that needs a passphrase an “Are you sure you wan
 If the Password Is Incorrect Then Script Will:
 Display a please wait initialising message this will make the user/attacker feel a sense of accomplishment this message could be in the form of a basic loop which does nothing else but show a loading sequence of some form.
 Meanwhile the script will: 
-Create an image of the device. (if any hidden partitions were found in initial scan these will be imaged first should the device be manually removed, this will give us some info as to what the attacker was trying to achieve and can be added to the database of known threats if unknown)
+Create an image of the device. (if any hidden partitions were found in initial scan these will be imaged first should the device be manually removed, this will give us some info as to what the attacker was trying to achieve and can be added to the database of known threats if unknown) <br />
 `edit` the following was deemed `unethical`:
 As a precaution in the case of the attacker using device on another machine after attempting to breach our machine the device is rendered unusable for any subsequent attacks. 
 Start DD 6 Phase Wipe E.g. Zeros, Urandom, Zeros, Urandom, Zeros, Urandom (this will prevent user/attacker from recovering data should the try recovering partitions after the next phase.)
@@ -62,7 +62,7 @@ Read keyboard character speed to differentiate between automated input  and huma
 Downlod ZIP file, UNZIP, navigate to setup directory, make install.sh executable: `chmod +x install.sh`
 execute install.sh `./install.sh` and follow instrucions.  
 The database script expects four arguments `$host $dbname $name $pass` <br />
-e.g. `<ip-address>or<localhost> <database_name> <name> <pass>` localhost defender root toor etc.
+e.g. `<ip-address>or<localhost> <database_name> <name> <pass>` localhost defender hackme letmein etc.
 
 # CHANGELOG
 
@@ -74,7 +74,7 @@ So a decision was made to concentrate on: any shell thats opened should run a ch
 if flag was set then run specific script  (see bashrc for details), the script called will gauge human vs non human input speed
 and log all stdin for later analysation, then (TODO alert admin,take photo of attacker if possible and any other security measures
 necessary for instance system lockdown.. system audible beeps to attract attention to breach etc...)
-this is our focus at the moment 
-should checks assume its human  then script exits then (TODO recall commands and execute) <br />
+this is our focus at the moment  <br />
+Should it be the case that checks assume its human  then the script exits then (TODO recall commands and execute) <br />
 to be continued............
  
