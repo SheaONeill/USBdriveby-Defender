@@ -46,7 +46,9 @@ while read_char input_char; do
     printf "Execution time: %.6f seconds" $dur
     #ref :http://stackoverflow.com/questions/15224581/floating-point-comparison-with-variable-in-bash
 	if (( $(echo "${dur} < ${lim}" | bc -l) )); then
-	#if (( $(echo "$dur" < "$lim" | bc -l) )); then
+	#
+	#unbind device
+	#/usr/local/bin/unbind
 	#
 	#this is where alerts happen (a function from another scirpt can be called here
 	#or just call script itself (choices choices)

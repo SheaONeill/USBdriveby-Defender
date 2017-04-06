@@ -16,9 +16,9 @@ do
             echo "keyboard detected: ${dev}"
             #strip device name (TODO set as varable of tmpfile)
             #ref: Linux and Unix shell programming David Tansley
-            device_driver=$(basename ${dev})
+            DEVICE_DRIVER=$(basename ${dev})
             #echo "keyboard detected: $(basename ${dev})"
-            echo "Device driver: ${device_driver}"
+            echo "Device driver: ${DEVICE_DRIVER}"
         fi
     fi
 done
