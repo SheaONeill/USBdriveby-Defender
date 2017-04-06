@@ -3,6 +3,7 @@
 
 # OVERVIEW
 
+This is a third year project/thesis for cyber security /digital forensics. `Work in Progress` <br />
 A Shell script/Security Application (This Is to Guard Against Attackers, cyber espionage that have physical access to system) that will auto-run/execute when an unknown USB device is inserted into a Linux/Unix based operating system. The script scans the device to find hardware ID’s to compare against known devices from a database and adds the device if necessary. Kill all processes that could possibly allow device to run malicious payloads or possible keyboard emulation  The script using a menu will give the user/attacker an opportunity to review any steps they wish to take thus giving them the opportunity to walk away with their device with no harm done should they be innocent. The menu will include a terms and agreements giving the user/attacker prior knowledge of what the script consists of and how it will affect their device and legal implications should they accept/continue. System admins will be notified via text message/email to inform them of intrusion attempt. Meanwhile the script shall gather as much information from the device, file and folder structure, executables. history to track attacker and/or create profile of attacker  for further investigation. 
 
 # GOALS:
@@ -64,7 +65,7 @@ execute install.sh `./install.sh` and follow instrucions.
 The database script expects four arguments `$host $dbname $name $pass` <br />
 e.g. `<ip-address>or<localhost> <database_name> <name> <pass>` localhost defender hackme letmein etc.<br />
 host must be accurate all other values will be created and db grant permissions will accomadate.<br />
-(TODO give option to install bc if not found)
+(TODO give option to install bc if not found).
 
 # CHANGELOG
 
