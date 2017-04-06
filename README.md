@@ -67,14 +67,14 @@ e.g. `<ip-address>or<localhost> <database_name> <name> <pass>` localhost defende
 # CHANGELOG
 
 This code is not fully functional as of yet, read the comments in the scripts for details. <br />
-While concentrating on all keyboard input, and after researhing known  BAD USB/Rubber Duckky linux/unix attacks,
+While concentrating on all keyboard input, and after reseaching known  BAD USB/Rubber Duckky linux/unix attacks,
 Our finding where that attacks seem to stem from `<alt> <f2> or <ctrl><alt><t>` which in a nutshell opens a terminal or 
-xterm and runs commands. 
+xterm and runs commands. <br />
 So a decision was made to concentrate on: any shell thats opened should run a check for if  a flag was set for flash or keyboard emulator
 if flag was set then run specific script  (see bashrc for details), the script called will gauge human vs non human input speed
 and log all stdin for later analysation, then (TODO alert admin,take photo of attacker if possible and any other security measures
 necessary for instance system lockdown.. system audible beeps to attract attention to breach etc...)
 this is our focus at the moment 
-should checks assume its human  then script exits then (TODO recall commands and execute)
+should checks assume its human  then script exits then (TODO recall commands and execute) <br />
 to be continued............
  
