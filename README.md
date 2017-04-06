@@ -63,7 +63,7 @@ Read keyboard character speed to differentiate between automated input  and huma
 Downlod ZIP file, UNZIP, navigate to setup directory, make install.sh executable: `chmod +x install.sh`
 execute install.sh `./install.sh` and follow instrucions.  
 The database script expects four arguments `$host $dbname $name $pass` <br />
-e.g. `<ip-address>or<localhost> <database_name> <name> <pass>` localhost defender hackme letmein etc.<br />
+e.g. `[ <ip-address> | <localhost> ] <database_name> <name> <pass>` localhost defender hackme letmein etc.<br />
 host must be accurate all other values will be created and db grant permissions will accomadate.<br />
 (TODO give option to install bc if not found).
 
