@@ -42,6 +42,7 @@ If the Password Is Incorrect Then Script Will:
 Display a please wait initialising message this will make the user/attacker feel a sense of accomplishment this message could be in the form of a basic loop which does nothing else but show a loading sequence of some form.
 Meanwhile the script will: 
 Create an image of the device. (if any hidden partitions were found in initial scan these will be imaged first should the device be manually removed, this will give us some info as to what the attacker was trying to achieve and can be added to the database of known threats if unknown)
+`edit` the following was deemed `unethical`:
 As a precaution in the case of the attacker using device on another machine after attempting to breach our machine the device is rendered unusable for any subsequent attacks. 
 Start DD 6 Phase Wipe E.g. Zeros, Urandom, Zeros, Urandom, Zeros, Urandom (this will prevent user/attacker from recovering data should the try recovering partitions after the next phase.)
 Start FDisk or similar  to create new partitions matching the original device structure 
@@ -63,12 +64,13 @@ Read keyboard character speed to differentiate between automated input  and huma
 
 ATM this code is not fully functional as of yet, read the comments in the scripts for details
 while concentrating on all keyboard input, after researhing known  BAD USB/Rubber Duckky linux/unix attacks,
-which seem to stem from `<alt> <f2> or <ctrl><alt><t>` a decision was made to concentrate
-on any shell thats opened should run a check for if  a flag was set for flash or keyboard emulator
+which seem to stem from `<alt> <f2> or <ctrl><alt><t>` which in a nutshell opens a terminal or 
+xterm and runs commands. 
+So a decision was made to concentrate on: any shell thats opened should run a check for if  a flag was set for flash or keyboard emulator
 if flag was set then run specific script  (see bashrc for details), the script called will gauge human vs non human input speed
 and log all stdin for later analysation, then (TODO alert admin,take photo of attacker if possible and any other security measures
 necessary for instance system lockdown.. system audible beeps to attract attention to breach etc...)
 this is our focus at the moment 
-shoud checks assume its human  then script exits then (TODO recall commands and execute)
+should checks assume its human  then script exits then (TODO recall commands and execute)
 to be continued............
  
