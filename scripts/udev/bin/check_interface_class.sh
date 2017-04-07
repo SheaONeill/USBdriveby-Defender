@@ -3,6 +3,8 @@
 # USB Driveby Defender
 #
 # Check Interface
+# This script is run to check the description
+# of the device insertered and set flag
 #---------------------
 #check the path variables
 echo -e "\nLOG_PATH SET ${LOG_PATH} \nIN $0 " >> ${LOG_PATH}${PATH_LOG_NAME}

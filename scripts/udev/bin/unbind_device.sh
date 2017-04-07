@@ -3,6 +3,9 @@
 # USB Driveby Defender
 #
 # Unbind Device Driver
+# This script disables the driver
+# for the specific device
+# this should be called if its non-human
 #---------------------
 
 #check the path variables

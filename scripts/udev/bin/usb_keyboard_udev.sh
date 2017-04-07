@@ -3,7 +3,9 @@
 # USB Driveby Defender
 #
 # Keyboard Udev
-#---------------------
+# This script is run when a USB Keyboard is inserted
+# (see 63-usb-kbd.rules)
+#---------------------------------------------------------------------
 
 #set the log path variable
 export LOG_PATH="/var/log/driveby_defender/"

@@ -3,6 +3,10 @@
 # USB Driveby Defender
 #
 # Set Rules for Remove
+# This script inserts the model name
+# into the rules for the specific device
+# note this was necessary otherwise
+# the rule wouldn't trigger
 #---------------------
 
 RULES_PATH="/etc/udev/rules.d/"
@@ -20,13 +24,11 @@ export ID_MODEL_ID=$(set 2>&1 | grep -w 'ID_MODEL_ID' | cut -d'=' -f2)
 export ID_VENDOR_ID=$(set 2>&1 | grep -w 'ID_VENDOR_ID' | cut -d'=' -f2)
 echo "ID_VENDOR_ID is ${ID_VENDOR_ID}" >> ${LOG_PATH}${DEVICE_LOG_NAME}
 #
-#echo "Exiting before setting rules" >> ${LOG_PATH}${DEVICE_LOG_NAME}
-#exit 0
 #get model number and send it to remove in rules  file
 sed -i '/ACTION=="remove"/ c\ACTION=="remove", ENV{ID_MODEL}=="'"${ID_MODEL}"'", RUN+="/usr/local/bin/usb_device_removed.sh" ' ${RULES_PATH}${DEVICE_RULES_PATH}
 #reload rules so change will take affect
 udevadm control --reload
-##udevadm monitor --property #this will follow devices
+##udevadm monitor --property #this will follow devices use this for demo
 echo "Done Here! $0" >> ${LOG_PATH}${DEVICE_LOG_NAME}
 
 exit 0

@@ -3,6 +3,8 @@
 # USB Driveby Defender
 #
 # Read Characters
+# This script reads a single character from stdin
+# and checks for line breaks
 #---------------------
 
 #check the path variables

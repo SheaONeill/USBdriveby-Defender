@@ -3,6 +3,9 @@
 # USB Driveby Defender
 #
 # Get Standard Input
+# This script calls a function in get_char script
+# and checks the speed of stdin and logs everything
+# Work in Progress!!
 #---------------------
 
 #check the path variables

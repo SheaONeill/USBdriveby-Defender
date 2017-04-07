@@ -3,6 +3,7 @@
 # USB Driveby Defender
 #
 # USB Device Removed
+# This script is called when a device is removed
 #---------------------
 
 #set the log path variable
@@ -24,8 +25,10 @@ if [ -f ${LOG_PATH}keyboard_flag ]; then
     #
     #unset flag
     echo 0 > ${LOG_PATH}keyboard_flag
+
+fi
     
-elif [ -f ${LOG_PATH}flash_flag ]; then
+if [ -f ${LOG_PATH}flash_flag ]; then
     #time its always good to wait
     sleep 1
     echo "In IF Flash Statement: ${LOG_PATH}" >> ${LOG_PATH}${DEVICE_LOG_NAME}

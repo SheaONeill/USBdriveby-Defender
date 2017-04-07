@@ -3,7 +3,9 @@
 # USB Driveby Defender
 #
 # Flash Udev 
-#---------------------
+# This script is run when a USB Flash is inserted
+# (see 81-usb-flash.rules)
+#----------------------------------------------------------------------
 
 export LOG_PATH="/var/log/driveby_defender/"
 export DEVICE_RULES_PATH="81-usb-flash.rules"
