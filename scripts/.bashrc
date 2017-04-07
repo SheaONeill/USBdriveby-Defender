@@ -127,13 +127,15 @@ echo "In .bashrc Now!"
 #check if keyboard is inserted
 #setlog path variable
 LOG_PATH="/var/log/driveby_defender/"
+##get value from check_interface_class.sh
+#source /usr/local/bin/check_interface_class.sh 
 #need to change this to to check if keyboard_flag is set to 0 or 1
-if [ -f ${LOG_PATH}keyboard_details.log ]; then
+if [ -f ${LOG_PATH}keyboard_flag ]; then
 	echo "A Keyboard Device has been Detected!"
 /usr/local/bin/get_input.sh
 #
 #need to change this to to check if flash_flag is set to 0 or 1
-elif [ -f ${LOG_PATH}flash_details.log ] ; then
+elif [ -f ${LOG_PATH}flash_flag ] ; then
 	echo "A Flash Device has been Detected!"
 /usr/local/bin/get_input.sh
 else

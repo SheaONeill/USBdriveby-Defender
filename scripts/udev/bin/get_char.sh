@@ -2,7 +2,7 @@
 #
 # USB Driveby Defender
 #
-#
+# Read Characters
 #---------------------
 
 read_char () {

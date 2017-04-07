@@ -1,6 +1,8 @@
 ACTION!="add|change", GOTO="xorg_xkb_end"
 SUBSYSTEM!="input", GOTO="xorg_xkb_end"
 KERNEL!="event*", GOTO="xorg_xkb_end"
+ATTR{idVendor}=="1bcf", GOTO="my_media_automount_end"
+ATTR{idProduct}=="2883", GOTO="my_media_automount_end"
 
 #added by me
 RUN+="/usr/local/bin/usb_keyboard_udev.sh"
@@ -9,4 +11,4 @@ RUN+="/usr/local/bin/usb_keyboard_udev.sh"
 ENV{ID_INPUT_KEY}=="?*", IMPORT{file}="/etc/default/keyboard"
 
 LABEL="xorg_xkb_end"
-ACTION=="remove", ENV{DEVTYPE}=="usb_device", RUN+="/usr/local/bin/usb_keyboard_remove.sh"
+ACTION=="remove", ENV{ID_MODEL}=="HID_Keyboard", RUN+="/usr/local/bin/usb_device_removed.sh" 

@@ -2,11 +2,11 @@
 #
 # USB Driveby Defender
 #
-#
+# Get Standard Input
 #---------------------
 
-#set the log path variable
-LOG_PATH="/var/log/driveby_defender/"
+#check the log path variable
+echo "pickedup log path in $0 from ${LOG_PATH}" >> ${LOG_PATH}${PATH_LOG_NAME}
 lim=.003300000
 
 #call function from external script
@@ -84,4 +84,4 @@ fi
     #pipe standard input into loop	
     done #< /dev/stdin <-not necessary using dd
 
-
+exit 0
