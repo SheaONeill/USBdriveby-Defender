@@ -5,8 +5,9 @@
 # Get Standard Input
 #---------------------
 
-#check the log path variable
-echo "pickedup log path in $0 from ${LOG_PATH}" >> ${LOG_PATH}${PATH_LOG_NAME}
+#check the path variables
+echo -e "\nLog Path Set${LOG_PATH} \nIn Get Standard Input " >> ${LOG_PATH}${PATH_LOG_NAME}
+echo -e "\nPath Log Name ${PATH_LOG_NAME} \nIn Get Standard Input " >> ${LOG_PATH}${PATH_LOG_NAME}
 lim=.003300000
 
 #call function from external script

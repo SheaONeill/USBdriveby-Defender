@@ -108,6 +108,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
 #--------------------------------------------------------------------------------------
 #
 # USB Driveby Defender
@@ -124,20 +125,38 @@ fi
 #check  values when shells are executed
 echo "In .bashrc Now!"
 #
+#set the log path variable
+export LOG_PATH="/var/log/driveby_defender/"
+export PATH_LOG_NAME="log_path.log"
+
 #check if keyboard is inserted
-#setlog path variable
-LOG_PATH="/var/log/driveby_defender/"
+
 ##get value from check_interface_class.sh
 #source /usr/local/bin/check_interface_class.sh 
 #need to change this to to check if keyboard_flag is set to 0 or 1
 if [ -f ${LOG_PATH}keyboard_flag ]; then
-	echo "A Keyboard Device has been Detected!"
-/usr/local/bin/get_input.sh
+    #check to see if flag is set
+   if  [[ $(head -1 ${LOG_PATH}keyboard_flag) == 1 ]] ;then
+   # if [ grep 1 ${LOG_PATH}keyboard_flag ]; then 
+	    echo "A Keyboard Device has been Detected!"
+	    #call get_input.sh
+        /usr/local/bin/get_input.sh
+    elif  [[ $(head -1 ${LOG_PATH}keyboard_flag) == 0 ]] ;then
+        echo "No Keyboard Flag is set!!"
+    fi
+fi
 #
 #need to change this to to check if flash_flag is set to 0 or 1
-elif [ -f ${LOG_PATH}flash_flag ] ; then
-	echo "A Flash Device has been Detected!"
-/usr/local/bin/get_input.sh
+if [ -f ${LOG_PATH}flash_flag ] ; then
+    #check to see if flag is set
+    if  [[ $(head -1 ${LOG_PATH}flash_flag) == *1* ]] ;then
+	    echo "A Flash Device has been Detected!"
+	    #call get_input.sh
+        /usr/local/bin/get_input.sh
+    elif  [[ $(head -1 ${LOG_PATH}flash_flag) == *0* ]] ;then
+        echo "No Flash Flag is set!"
+    fi
+#
 else
 	echo "No Device has been Detected!"
 fi

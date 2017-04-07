@@ -6,8 +6,11 @@
 #---------------------
 
 RULES_PATH="/etc/udev/rules.d/"
-#check the log path variable
-echo "pickedup log path in $0 from ${LOG_PATH}" >> ${LOG_PATH}${PATH_LOG_NAME}
+#check the path variables
+echo -e "\nLOG_PATH SET ${LOG_PATH} \nIN $0 " >> ${LOG_PATH}${PATH_LOG_NAME}
+echo -e "\nDEVICE_RULES_PATH SET ${DEVICE_RULES_PATH} \nIN $0 " >> ${LOG_PATH}${PATH_LOG_NAME}
+echo -e "\nDEVICE_LOG_NAME ${DEVICE_LOG_NAME} \nIN $0 " >> ${LOG_PATH}${PATH_LOG_NAME}
+echo -e "\nPATH_LOG_NAME ${PATH_LOG_NAME} \nIN $0 " >> ${LOG_PATH}${PATH_LOG_NAME}
 #maybe use function for this need it for keyboard rules also
 #collect all details of inserted device
 set 2>&1 >> ${LOG_PATH}${DEVICE_LOG_NAME}

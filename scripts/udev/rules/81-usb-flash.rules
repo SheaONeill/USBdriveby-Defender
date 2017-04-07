@@ -3,7 +3,7 @@ KERNEL!="sd[b-z]*", GOTO="my_media_automount_end"
 
 ACTION=="add", ATTR{partition}=="*", ATTRS{idVendor}=="****", ATTRS{idProduct}=="****", RUN+="/usr/local/bin/usb_flash_udev.sh"
 #
-ACTION=="remove", ENV{ID_MODEL}=="TF10", RUN+="/usr/local/bin/usb_device_removed.sh" 
+ACTION=="remove", ENV{ID_MODEL}=="USB_Flash_Disk", RUN+="/usr/local/bin/usb_device_removed.sh" 
 #
 #go here first if sda is anything else sdb-z run script 
 LABEL="my_media_automount_end"

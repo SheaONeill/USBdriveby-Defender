@@ -10,7 +10,12 @@ export LOG_PATH="/var/log/driveby_defender/"
 export DEVICE_RULES_PATH="63-usb-kbd.rules"
 export DEVICE_LOG_NAME="keyboard_details.log"
 export PATH_LOG_NAME="log_path.log"
-echo "LOG_PATH SET IN KEYBOARD UDEV: ${LOG_PATH}" >> ${LOG_PATH}${PATH_LOG_NAME}
+#check the path variables
+echo -e "\nLog Path Set: ${LOG_PATH} \nIn Keyboard Udev " >> ${LOG_PATH}${PATH_LOG_NAME}
+echo -e "\nDevice Rules Path Set: ${DEVICE_RULES_PATH} \nIn Keyboard Udev $0 " >> ${LOG_PATH}${PATH_LOG_NAME}
+echo -e "\nDevice Log Name: ${DEVICE_LOG_NAME} \nIn Keyboard Udev " >> ${LOG_PATH}${PATH_LOG_NAME}
+echo -e "\nPath Log Name ${PATH_LOG_NAME} \nIn Keyboard Udev " >> ${LOG_PATH}${PATH_LOG_NAME}
+echo -e "\n--------------------------------------------------------------------\n"
 
     #time for the kernel: load usb drivers
     sleep 1
