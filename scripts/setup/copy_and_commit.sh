@@ -15,7 +15,8 @@ GIT_REPO_SETUP_PATH="scripts/"
 BASHRC_PATH="$HOME/.bashrc"
 #test
 echo -e "\nPaths: Local :${LOCAL_RULES_PATH} \nGit  ${GIT_REPO_PATH} \nGit Rules: ${GIT_REPO_RULES_PATH}"
-echo "Copying ${LOCAL_RULES_PATH}*.rules to ${GIT_REPO_PATH}${GIT_REPO_RULES_PATH}"
+echo "Copying ${LOCAL_RULES_PATH}63-usb-kbd.rules ${GIT_REPO_PATH}${GIT_REPO_RULES_PATH}"
+echo "Copying ${LOCAL_RULES_PATH}81-usb-flash.rules ${GIT_REPO_PATH}${GIT_REPO_RULES_PATH}"
 echo "press ENTER to continue"; read a
 #copy all rules from local to git
 cp "${LOCAL_RULES_PATH}"63-usb-kbd.rules ${GIT_REPO_PATH}${GIT_REPO_RULES_PATH}
