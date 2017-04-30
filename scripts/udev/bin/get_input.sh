@@ -58,7 +58,7 @@ check_timings(){
 	            fi
 	
 	            #call unbind device
-                #unbind device
+                unbind_device
                 #
                 #call take_photo
                 #take_photo
@@ -130,14 +130,23 @@ check_timings(){
 unbind_device() {   
 	    #
 	    #unbind device
-	    # get specs
-	    ##get value from check_interface_class.sh
-        /usr/local/bin/check_interface_class.sh 
-	    echo -e "\ncalling unbind from get input\n"
+	    #get value from logfile
+	    export DEVICE_DRIVER=$(<${LOG_PATH}${DEVICE_DRIVER_LOG_NAME})
+        
+        
+	    echo -e "\ncalling unbind from $0\n"
 	    echo "Get Input Device driver: ${DEVICE_DRIVER}"
         echo "Get Input Device path: ${DEVICE_PATH}"
         echo "Get Input Device log name: ${DEVICE_LOG_NAME}"
+        echo -e "\n===============================">> ${LOG_PATH}${DEVICE_LOG_NAME}
+        echo -e "Script Name: $0">> ${LOG_PATH}${DEVICE_LOG_NAME}
+        echo -e "Timestamp: $(date +%F:%T:%N)">> ${LOG_PATH}${DEVICE_LOG_NAME}
+        echo -e "Issue DEVICE_DRIVER_LOG_NAME ??: ${DEVICE_DRIVER_LOG_NAME}">> ${LOG_PATH}${DEVICE_LOG_NAME}
+        echo -e "Issue DEVICE_DRIVER ??: ${DEVICE_DRIVER}">> ${LOG_PATH}${DEVICE_LOG_NAME}
+        echo -e "===============================\n">> ${LOG_PATH}${DEVICE_LOG_NAME}
+        
 	    /usr/local/bin/unbind_device.sh
+	    exit 0
 } 
 #contact_admin
 #contact_admin(){

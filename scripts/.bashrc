@@ -140,9 +140,11 @@ if [ -f ${LOG_PATH}keyboard_flag ]; then
     #check to see if flag is set
    if  [[ $(head -1 ${LOG_PATH}keyboard_flag) == 1 ]] ;then
    # if [ grep 1 ${LOG_PATH}keyboard_flag ]; then 
-	    echo "A Keyboard Device has been Detected! : ${DEVICE_DRIVER}"
+        echo "A Keyboard Device has been Detected!"
 	    export DEVICE_PATH="/sys/bus/usb/drivers/usbhid/"
         export DEVICE_LOG_NAME="keyboard_details.log"
+        export DEVICE_DRIVER_LOG_NAME="device_driver.log"            
+              
 	    #call get_input.sh
         /usr/local/bin/get_input.sh
     elif  [[ $(head -1 ${LOG_PATH}keyboard_flag) == 0 ]] ;then

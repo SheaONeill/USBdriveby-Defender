@@ -9,9 +9,16 @@
 #---------------------
 
 #check the path variables
+echo -e "\n===============================">> ${LOG_PATH}${DEVICE_LOG_NAME}
+echo -e "Script Name: $0">> ${LOG_PATH}${DEVICE_LOG_NAME}
+echo -e "Timestamp: $(date +%F:%T:%N)">> ${LOG_PATH}${DEVICE_LOG_NAME}
 echo -e "\nLOG_PATH SET ${LOG_PATH} \nIN $0 " >> ${LOG_PATH}${PATH_LOG_NAME}
 echo -e "\nDEVICE_RULES_PATH SET ${DEVICE_RULES_PATH} \nIN $0 " >> ${LOG_PATH}${PATH_LOG_NAME}
-echo -e "\nDEVICE_LOG_NAME ${DEVICE_LOG_NAME} \nIN $0 " >> ${LOG_PATH}${PATH_LOG_NAME}
+echo -e "DEVICE_LOG_NAME: ${DEVICE_LOG_NAME}" >> ${LOG_PATH}${PATH_LOG_NAME}
+echo -e "DEVICE_DRIVER_LOG_NAME: ${DEVICE_DRIVER_LOG_NAME}" >> ${LOG_PATH}${PATH_LOG_NAME}
+echo -e "DEVICE_DRIVER: ${DEVICE_DRIVER}" >> ${LOG_PATH}${PATH_LOG_NAME}
+
+
 #added this as DEVICE_LOG_NAME not been exported to check interface
 #TODO fix this
 
@@ -28,4 +35,4 @@ pwd
 #get this 
 #echo -n 3-3:1.0 > unbind
 ##################################
-#echo -n "${DEVICE_DRIVER}" > unbind
+echo -n "${DEVICE_DRIVER}" > unbind
