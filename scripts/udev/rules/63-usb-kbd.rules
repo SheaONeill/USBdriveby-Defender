@@ -11,7 +11,7 @@ ACTION=="add", ENV{ID_INPUT_KEYBOARD}=="1", RUN+="/usr/local/bin/usb_keyboard_ud
 ENV{ID_INPUT_KEY}=="?*", IMPORT{file}="/etc/default/keyboard"
 
 LABEL="xorg_xkb_end"
-ACTION=="remove", ENV{ID_MODEL}=="HID_Keyboard", RUN+="/usr/local/bin/usb_device_removed.sh" 
+ACTION=="remove", ENV{ID_MODEL}=="", RUN+="/usr/local/bin/usb_device_removed.sh" 
 
 
 

@@ -58,18 +58,19 @@ check_timings(){
 	            fi
 	
 	            #call unbind device
-                unbind_device
+                /usr/local/bin/unbind_device.sh
                 #
                 #call take_photo
-                #take_photo
+                /usr/local/bin/take_photo.sh
                 #
                 #contact_admin
-	            #contact_admin
+	             /usr/local/bin/contact_admin.sh
 	            #                
                 #lock_down
-                #lock_down
+                 /usr/local/bin/lock_down.sh
+                #
                 #call sound_alarm
-                #sound_alarm
+                /usr/local/bin/sound_alarm.sh
                 #
                 #addons
 	            #upload captured details to server in case system gets compromised
@@ -126,56 +127,6 @@ check_timings(){
     count=$(($count+1));
    
 }
-
-unbind_device() {   
-	    #
-	    #unbind device
-	    #get value from logfile
-	    export DEVICE_DRIVER=$(<${LOG_PATH}${DEVICE_DRIVER_LOG_NAME})
-        
-        
-	    echo -e "\ncalling unbind from $0\n"
-	    echo "Get Input Device driver: ${DEVICE_DRIVER}"
-        echo "Get Input Device path: ${DEVICE_PATH}"
-        echo "Get Input Device log name: ${DEVICE_LOG_NAME}"
-        echo -e "\n===============================">> ${LOG_PATH}${DEVICE_LOG_NAME}
-        echo -e "Script Name: $0">> ${LOG_PATH}${DEVICE_LOG_NAME}
-        echo -e "Timestamp: $(date +%F:%T:%N)">> ${LOG_PATH}${DEVICE_LOG_NAME}
-        echo -e "Issue DEVICE_DRIVER_LOG_NAME ??: ${DEVICE_DRIVER_LOG_NAME}">> ${LOG_PATH}${DEVICE_LOG_NAME}
-        echo -e "Issue DEVICE_DRIVER ??: ${DEVICE_DRIVER}">> ${LOG_PATH}${DEVICE_LOG_NAME}
-        echo -e "===============================\n">> ${LOG_PATH}${DEVICE_LOG_NAME}
-        
-	    /usr/local/bin/unbind_device.sh
-	    exit 0
-} 
-#contact_admin
-#contact_admin(){
-  #contact_admin
-#}
-
-#take_photo
-#take_photo() {
- #take_photo
-#}
-
-
-
-#sound the alarm
-#to make a beep sound alarm
-#tput bell
-#if not initiated sudo modprobe pcspkr
-sound_alarm() {
- while true;do tput bel; done;
-}
-
-#lock_down
-lock_down() {
-        #this will lock the screen on gnome (more research for other desktops eg KDE)
-        #checkout dbus.freegesktop.org for dbus specs (interprocess communication)        
-        dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
-	    #
-}
-
 
 #call function from external script
 source /usr/local/bin/get_char.sh

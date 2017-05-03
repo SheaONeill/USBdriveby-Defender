@@ -21,7 +21,19 @@ echo -e "DEVICE_DRIVER: ${DEVICE_DRIVER}" >> ${LOG_PATH}${PATH_LOG_NAME}
 
 #added this as DEVICE_LOG_NAME not been exported to check interface
 #TODO fix this
+#get value from logfile
+export DEVICE_DRIVER=$(<${LOG_PATH}${DEVICE_DRIVER_LOG_NAME})
 
+echo -e "\ncalling unbind from $0\n"
+	    echo "Get Input Device driver: ${DEVICE_DRIVER}"
+        echo "Get Input Device path: ${DEVICE_PATH}"
+        echo "Get Input Device log name: ${DEVICE_LOG_NAME}"
+        echo -e "\n===============================">> ${LOG_PATH}${DEVICE_LOG_NAME}
+        echo -e "Script Name: $0">> ${LOG_PATH}${DEVICE_LOG_NAME}
+        echo -e "Timestamp: $(date +%F:%T:%N)">> ${LOG_PATH}${DEVICE_LOG_NAME}
+        echo -e "Issue DEVICE_DRIVER_LOG_NAME ??: ${DEVICE_DRIVER_LOG_NAME}">> ${LOG_PATH}${DEVICE_LOG_NAME}
+        echo -e "Issue DEVICE_DRIVER ??: ${DEVICE_DRIVER}">> ${LOG_PATH}${DEVICE_LOG_NAME}
+        echo -e "===============================\n">> ${LOG_PATH}${DEVICE_LOG_NAME}
 echo -e "\nPATH_LOG_NAME ${PATH_LOG_NAME} \nIN $0 " >> ${LOG_PATH}${PATH_LOG_NAME}
 
 #not working at the min need to call function here from interface class

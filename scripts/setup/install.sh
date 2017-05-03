@@ -46,6 +46,18 @@ copy_scripts () {
     ls -la "${LOCAL_BIN_PATH}"
 }
 
+#confirm user input
+confirm() {
+  while true; do
+    read -r -n 1 -p "${1:-Continue?} [y/n]: " REPLY
+    case $REPLY in
+      [yY]) echo ; return 0 ;;
+      [nN]) echo ; return 1 ;;
+      *) printf " \033[31m %s \n\033[0m" "invalid input"
+    esac 
+  done  
+}
+
 #setup database function
 setup_database () {
     #setup database call dbsetup script and pass values
@@ -67,7 +79,7 @@ get_db_details () {
 
 #get dependencies 
 check_dependencies () {
-    #check if bc is installed
+    #todo check alldependencies at the same time
     #ref: http://stackoverflow.com/a/592649
     if which bc >/dev/null; then echo "bc is already installed............."
     else
@@ -84,6 +96,57 @@ check_dependencies () {
         check_dependencies
         fi
     fi
+    ########
+    if which mplayer >/dev/null; then echo "mplayer is already installed............."
+    else
+    #install bc and wait until complete before continuing
+    #ref: http://unix.stackexchange.com/a/269276
+    gnome-terminal -e 'bash -c "sudo apt-get update && sudo apt-get install mplayer"' & wait $!
+    #test
+    echo -e "\nPID of last command: $!"
+    
+        #re-check if bc is installed
+        if which mplayer >/dev/null; then echo "dependency mplayer installed"
+        else echo >&2 "Something went wrong!"; 
+        #recall function
+        check_dependencies
+        fi
+    fi
+    ######
+    if which mailutils >/dev/null; then echo "mailutils is already installed............."
+    else
+    #install bc and wait until complete before continuing
+    #ref: http://unix.stackexchange.com/a/269276
+    gnome-terminal -e 'bash -c "sudo apt-get update && sudo apt-get install mailutils"' & wait $!
+    #test
+    echo -e "\nPID of last command: $!"
+    
+        #re-check if bc is installed
+        if which mailutils >/dev/null; then echo "dependency mailutils installed"
+        else echo >&2 "Something went wrong!"; 
+        #recall function
+        check_dependencies
+        fi
+    fi
+    ##########
+    if which ssmtp >/dev/null; then echo "ssmtp is already installed............."
+    else
+    #install bc and wait until complete before continuing
+    #ref: http://unix.stackexchange.com/a/269276
+    gnome-terminal -e 'bash -c "sudo apt-get update && sudo apt-get install ssmtp"' & wait $!
+    #test
+    echo -e "\nPID of last command: $!"
+    
+        #re-check if bc is installed
+        if which ssmtp >/dev/null; then echo "dependency ssmtp installed"
+        else echo >&2 "Something went wrong!"; 
+        #recall function
+        check_dependencies
+        fi
+    fi
+    
+    
+    
 echo "Press Enter to continue";read a
 }
 
