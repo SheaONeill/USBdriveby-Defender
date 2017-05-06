@@ -9,8 +9,8 @@
 #---------------------
 
 #check the path variables
-echo -e "\nLog Path Set${LOG_PATH} \nIn Get Standard Input " >> ${LOG_PATH}${PATH_LOG_NAME}
-echo -e "\nPath Log Name ${PATH_LOG_NAME} \nIn Get Standard Input " >> ${LOG_PATH}${PATH_LOG_NAME}
+#echo -e "\nLog Path Set${LOG_PATH} \nIn Get Standard Input " >> ${LOG_PATH}${PATH_LOG_NAME}
+#echo -e "\nPath Log Name ${PATH_LOG_NAME} \nIn Get Standard Input " >> ${LOG_PATH}${PATH_LOG_NAME}
 export count=1
 #fix this limit when speed is sorted
 lim=2363480
@@ -26,7 +26,7 @@ source /usr/local/bin/get_char.sh
 while read_char input_char; do
     #interesting: if no inteaction within n sec/min exit  100=1 min'ish
     #nothing in man or help or maybe i should level up mr google and thegeekstuff.com helped
-    export TMOUT=100
+    #export TMOUT=100
     #set the start time variable
     #start=$(date +%s.%N)
     start=$(date  +%N)

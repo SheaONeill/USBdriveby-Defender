@@ -16,11 +16,14 @@ log_details () {
     echo -e "Rules Path Set: ${RULES_PATH}" >> ${LOG_PATH}${PATH_LOG_NAME}
     echo -e "Device Rules Path Set: ${DEVICE_RULES_PATH}" >> ${LOG_PATH}${PATH_LOG_NAME}
     echo -e "Device Log Name: ${DEVICE_LOG_NAME}" >> ${LOG_PATH}${PATH_LOG_NAME}
+    echo -e "Device Path: ${DEVICE_PATH}" >> ${LOG_PATH}${PATH_LOG_NAME}
     echo -e "Device Driver Log Name: ${DEVICE_DRIVER_LOG_NAME}" >> ${LOG_PATH}${PATH_LOG_NAME}
+    echo -e "Device Log Name: ${DEVICE_LOG_NAME}" >> ${LOG_PATH}${PATH_LOG_NAME}
     echo -e "Path Log Name: ${PATH_LOG_NAME}" >> ${LOG_PATH}${PATH_LOG_NAME}
+    echo -e "Test: $2" >> ${LOG_PATH}${PATH_LOG_NAME}
     echo -e "===============================\n" >> ${LOG_PATH}${PATH_LOG_NAME}
 
 }
 
 #call log_details function
-log_details $1
+log_details $1 $2

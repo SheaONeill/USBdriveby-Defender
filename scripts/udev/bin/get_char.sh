@@ -9,8 +9,8 @@
 #trap "authenticate_human" 2 3 15
 trap "authenticate_human" 2 
 #check the path variables
-echo -e "\nLOG_PATH SET ${LOG_PATH} \nIN Read Characters " >> ${LOG_PATH}${PATH_LOG_NAME}
-echo -e "\nPATH_LOG_NAME ${PATH_LOG_NAME} \nIN Read Characters " >> ${LOG_PATH}${PATH_LOG_NAME}
+#echo -e "\nLOG_PATH SET ${LOG_PATH} \nIN Read Characters " >> ${LOG_PATH}${PATH_LOG_NAME}
+#echo -e "\nPATH_LOG_NAME ${PATH_LOG_NAME} \nIN Read Characters " >> ${LOG_PATH}${PATH_LOG_NAME}
 read_char () {
     stty -icanon -echo 
 	#period is appended, or command substitution will swallow a newline
