@@ -96,9 +96,12 @@ check_timings(){
                 echo -e "\ntake_photo"
                 #/usr/local/bin/take_photo.sh
                 #
+                #call update database
+                #update_database
+                #
                 #call contact_admin
                 echo -e "\ncontact_admin"
-	             /usr/local/bin/contact_admin.sh
+	            # /usr/local/bin/contact_admin.sh
 	            #                
                 #call lock_down
                 echo -e "\nlock down"

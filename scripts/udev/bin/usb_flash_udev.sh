@@ -22,6 +22,7 @@ echo -e "Device Driver Log Name: ${DEVICE_DRIVER_LOG_NAME}" >> ${LOG_PATH}${PATH
 echo -e "Path Log Name ${PATH_LOG_NAME}" >> ${LOG_PATH}${PATH_LOG_NAME}
 echo -e "===============================\n" >> ${LOG_PATH}${PATH_LOG_NAME}
 
+usb_flash () {
     #time for the kernel: load usb drivers
     sleep 1
     echo -e "\n===============================">> ${LOG_PATH}${DEVICE_LOG_NAME}
@@ -46,3 +47,7 @@ echo -e "===============================\n" >> ${LOG_PATH}${PATH_LOG_NAME}
     /usr/local/bin/set_remove_rules.sh & 
     
     exit 0
+    
+}
+#call usb_flash function
+usb_flash
