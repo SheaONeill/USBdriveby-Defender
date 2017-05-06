@@ -12,30 +12,43 @@ ERR_CODE=65
 MYSQL=`which mysql`
 echo "test" $# $1 $2 $3 $4
   
-CDB="CREATE DATABASE IF NOT EXISTS $2;"
-GU1="GRANT USAGE ON $2.* TO $3@$1 IDENTIFIED BY '$4';"
-GU2="GRANT ALL PRIVILEGES ON $2.* TO $3@$1;"
-FPS="FLUSH PRIVILEGES;"
-VFY="SHOW DATABASES;"
+CTDB="CREATE DATABASE $2;"
+GUSG="GRANT USAGE ON $2.* TO $3@$1 IDENTIFIED BY '$4';"
+GPLV="GRANT ALL PRIVILEGES ON $2.* TO $3@$1;"
+FPLV="FLUSH PRIVILEGES;"
+VRFY="SHOW DATABASES;"
 UDB="USE $2;"
-CWT="CREATE TABLE IF NOT EXISTS whitelist (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    idvendor VARCHAR(4),
-    idproduct VARCHAR(4),
-    name VARCHAR(30)
+USRT="CREATE TABLE IF NOT EXISTS user (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(10),
+    password VARCHAR(64),
+    email VARCHAR(30)
     );"
-IWT="INSERT INTO whitelist (idvendor,idproduct,name) 
-     VALUES ('8644', '800e', 'Intenso GmbG');"
-CBK="CREATE TABLE IF NOT EXISTS blacklist (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    idvendor VARCHAR(4),
-    idproduct VARCHAR(4),
-    name VARCHAR(30)
+IUSRT="INSERT INTO user (username,password,email) 
+     VALUES ('somename', 'somehashedpassword', 'someemailaddress');"
+BLKT="CREATE TABLE IF NOT EXISTS blacklist (
+    device_id INT AUTO_INCREMENT PRIMARY KEY,
+    vendor_id VARCHAR(4),
+    product_id VARCHAR(4),
+    device_type VARCHAR(30)
     );"
-IBK="INSERT INTO blacklist (idvendor,idproduct,name) 
+IBLKT="INSERT INTO blacklist (vendor_id,product_id,device_type) 
      VALUES ('0718', '070a', 'Imation Corp'),
      ('413c','2003','Dell Computer Corp. Keyboard');"
-SQL="${CDB}${GU1}${GU2}${FPS}${VFY}${UDB}${CWT}${IWT}${CBK}${IBK}"
+ATKLG="CREATE TABLE IF NOT EXISTS attack_log (
+    attack_id INT AUTO_INCREMENT PRIMARY KEY,
+    device_id INT, 
+    FOREIGN KEY (device_id)
+        REFERENCES blacklist(device_id)
+        ON DELETE CASCADE,
+    user_id INT,
+    FOREIGN KEY (user_id)
+        REFERENCES user(user_id)
+        ON DELETE CASCADE,
+    time DATETIME NOT NULL DEFAULT NOW()
+    );"
+
+SQL="${CTDB}${GUSG}${GPLV}${FPLV}${VRFY}${UDB}${USRT}${IUSRT}${BLKT}${IBLKT}${ATKLG}"
 
 #check if all arguments are satisfied  
 if [ $# -ne $ARGS ]
