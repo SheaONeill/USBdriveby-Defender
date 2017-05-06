@@ -22,7 +22,7 @@ usb_keyboard () {
 }
 
 #call export_paths function
-export_paths 
+export_paths 63-usb-kbd.rules keyboard_details.log
 #call log_details function
 log_details $0
 #call usb_keyboard function

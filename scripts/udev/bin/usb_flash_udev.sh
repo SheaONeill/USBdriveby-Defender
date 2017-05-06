@@ -23,7 +23,7 @@ usb_flash () {
 }
 
 #call export_paths function
-export_paths 
+export_paths 81-usb-flash.rules flash_details.log
 #call log_details function
 log_details $0
 #call usb_flash function
