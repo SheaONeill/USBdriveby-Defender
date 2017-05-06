@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash 
 #
 # USB Driveby Defender
 #
@@ -8,6 +8,7 @@
 #---------------------------------------------------------------------
 
 export_paths () {
+
     #set the log path variable
     export LOG_PATH="/var/log/driveby_defender/"
     export DEVICE_RULES_PATH="63-usb-kbd.rules"

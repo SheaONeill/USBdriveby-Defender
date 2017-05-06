@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash 
 #
 # USB Driveby Defender
 #
@@ -14,6 +14,7 @@ source /usr/local/bin/check_interface_class.sh
 source /usr/local/bin/set_remove_rules.sh 
 
 usb_keyboard () {
+
     #time for the kernel: load usb drivers
     sleep 1  
     
