@@ -21,7 +21,7 @@ check_interface () {
                 dmesg | grep $(echo "${DEVICE_DRIVER}" | cut -d: -f1) | grep Product | tail -n 3 > ${LOG_PATH}${DEVICE_LOG_NAME}
                       
                 #store device driver node name in file 
-                echo -e "${DEVICE_DRIVER}">> ${LOG_PATH}${DEVICE_DRIVER_LOG_NAME}
+                echo -e "${DEVICE_DRIVER}"> ${LOG_PATH}${DEVICE_DRIVER_LOG_NAME}
                 #set flag
                 echo 1 > ${LOG_PATH}keyboard_flag
                             
@@ -34,14 +34,14 @@ check_interface () {
                 #strore details of device in log file
                 dmesg | grep $(echo "${DEVICE_DRIVER}" | cut -d: -f1) | grep Product | tail -n 3 > ${LOG_PATH}${DEVICE_LOG_NAME}
                 #store device driver node name in file 
-                echo -e "${DEVICE_DRIVER}">> ${LOG_PATH}${DEVICE_DRIVER_LOG_NAME}
+                echo -e "${DEVICE_DRIVER}"> ${LOG_PATH}${DEVICE_DRIVER_LOG_NAME}
                 #set flag
                 echo 1 > ${LOG_PATH}flash_flag
 
             fi
 #testing
-udevadm info -q all -p /sys/bus/usb/devices/${DEVICE_DRIVER} >${LOG_PATH}getdetails.log
-udevadm monitor --property >${LOG_PATH}monitor.log
+#udevadm info -q all -p /sys/bus/usb/devices/${DEVICE_DRIVER} >${LOG_PATH}getdetails.log
+#udevadm monitor --property >${LOG_PATH}monitor.log
         fi
     done
 

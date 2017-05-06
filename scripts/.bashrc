@@ -152,14 +152,14 @@ if [ -f ${LOG_PATH}keyboard_flag ]; then
     fi
 fi
 #
-#need to change this to to check if flash_flag is set to 0 or 1
+#check if flash_flag is set to 0 or 1
 if [ -f ${LOG_PATH}flash_flag ] ; then
     #check to see if flag is set
-    if  [[ $(head -1 ${LOG_PATH}flash_flag) == *1* ]] ;then
+    if  [[ $(head -1 ${LOG_PATH}flash_flag) == 1 ]] ;then
 	    echo "A Flash Device has been Detected!"
 	    #call get_input.sh
         /usr/local/bin/get_input.sh
-    elif  [[ $(head -1 ${LOG_PATH}flash_flag) == *0* ]] ;then
+    elif  [[ $(head -1 ${LOG_PATH}flash_flag) == 0 ]] ;then
         echo "No Flash Flag is set!"
     fi
 #

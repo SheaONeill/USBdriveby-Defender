@@ -1,4 +1,4 @@
-#ACTION!="add|change", GOTO="xorg_xkb_end"
+ACTION!="add|change", GOTO="xorg_xkb_end"
 SUBSYSTEM!="input", GOTO="xorg_xkb_end"
 KERNEL!="event*", GOTO="xorg_xkb_end"
 ATTR{idVendor}=="1bcf", GOTO="my_media_automount_end"
