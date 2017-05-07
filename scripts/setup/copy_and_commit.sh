@@ -47,6 +47,10 @@ cp "${BASHRC_PATH}" ${GIT_REPO_PATH}${GIT_REPO_SETUP_PATH}
 echo
 ls -a ${GIT_REPO_PATH}${GIT_REPO_SETUP_PATH}
 #
+read a
+if [ "${a}" -ne "y" ]; then
+exit 0
+fi
 #git pull origin master
 echo  -e "\nChanging Directory"
 cd ${GIT_REPO_PATH}

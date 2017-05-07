@@ -8,58 +8,63 @@
 # Work in Progress!!
 #---------------------
 
-#check the path variables
-#echo -e "\nLog Path Set${LOG_PATH} \nIn Get Standard Input " >> ${LOG_PATH}${PATH_LOG_NAME}
-#echo -e "\nPath Log Name ${PATH_LOG_NAME} \nIn Get Standard Input " >> ${LOG_PATH}${PATH_LOG_NAME}
-export count=1
-#fix this limit when speed is sorted
-lim=2363480
-diff_limit=300000
-newline="false"
-space="false"
+#initialise counter
+count=1
+#trap key
+trap "authenticate_human" 2 
 
+authenticate_human() {
+echo -e "\n\nCtrl C Detected!\nDo the password stuff here"
+#use hash as this is a security course after all.
+trap "" 2 
+exit
+}	
 
-#call function from external script
-source /usr/local/bin/get_char.sh
-
-#read and loop until <ctrl><d> or exit
-while read_char input_char; do
-    #interesting: if no inteaction within n sec/min exit  100=1 min'ish
-    #nothing in man or help or maybe i should level up mr google and thegeekstuff.com helped
-    #export TMOUT=100
-    #set the start time variable
-    #start=$(date +%s.%N)
-    start=$(date  +%N)
-    echo -e "\nStart DateTime Now:  $start\n"
-    #call check_timings
-    check_timings
-    #get_time
-    
-    #this checks if newline or space character was entered
-    check_character_key
-    if [ "$newline" = "true" ]; 
-        then 
-        #append newline and value
-        echo -e "\n" >> ${LOG_PATH}keyboard_input.log
-        #echo '\n' >> ${LOG_PATH}keyboard_input.log
-        #reset bool
-        newline="false"
-     elif [ "$space" = "true" ]; 
-        then 
-        #append newline and value
-        echo -n " " >> ${LOG_PATH}keyboard_input.log
-        #reset bool
-        space="false"
-    else
+read_input () {
+   
+    while true; do 
+        input_char=$(dd bs=1 count=1 2>/dev/null; echo .);
+        time_now=$(date  +%N)
+        echo "This is ${count} charcarcter captured at $time_now"
+        #store this time in array
+        #this array will have to be exported so check timing script can see it
+        keystroke[${count}]=${time_now}
+        echo -e "\nKeystroke Array Var ${count}: ${keystroke[${count}]}"
+        
+        input_char=${input_char%?} 	
+        echo "char value is: ${input_char}"
+        
+        ##this checks if newline or space character was entered
+        if [ "$input_char" = $'\n' ]; 
+            then newline=true
+            #append newline and value
+            echo -e "\n" >> ${LOG_PATH}keyboard_input.log
+            #echo -e "newline=true" >> ${LOG_PATH}keyboard_input.log
+            
+                if [  ${count} -gt 8 ] 
+                    then
+                    #echo -e "count is $count" >> ${LOG_PATH}keyboard_input.log
+                    #call check_timings the dot precding this runs this in the same shell
+                    . /usr/local/bin/check_timings.sh
+                fi
+        fi
+        if [ "$input_char" = " " ]; 
+           then 
+            #append newline and value
+            echo -n " " >> ${LOG_PATH}keyboard_input.log
+            #echo -n "Space" >> ${LOG_PATH}keyboard_input.log
+        else
         #append $input_char no line breaks
         echo -n $input_char >> ${LOG_PATH}keyboard_input.log
     
-    fi
-    
-    #test    
-    #echo input_char value
-    echo "got $input_char"
-    echo "char value is: ${input_char}"
+        fi
 
-#pipe standard input into loop	
-done #< /dev/stdin <-not necessary using dd
+    #increment counter
+    count=$(($count+1));
+   
+done 
+
+}
+
+#call read_input function
+read_input
