@@ -9,15 +9,12 @@
 #---------------------
 
 #sound the alarm
-#to make a beep sound alarm
-#tput bell
-#if not initiated sudo modprobe pcspkr
 sound_alarm() {
-  #while true;do 
-  #tput bel
-  #; done;
-  while true;do   mplayer /usr/share/golismero/tools/sqlmap/extra/beep/beep.wav; done;
+    #todo check if speaker is muted
+    #loop beep wave
+    while true;do   mplayer /usr/local/bin/beep.wav; done;
 
 }
+#call sound_alarm function
 sound_alarm
 

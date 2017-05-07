@@ -8,28 +8,19 @@
 #----------------------------------------------------------------------
 
 #script imports
-source /usr/local/bin/export_paths.sh "81-usb-flash.rules" "flash_details.log" "/sys/bus/usb/drivers/usb-storage/"
+source /usr/local/bin/export_paths.sh "81-usb-flash.rules" "flash_details.log" "/sys/bus/usb/drivers/usb-storage/" "flash_flag"
 source /usr/local/bin/check_interface_class.sh
-source /usr/local/bin/log_details.sh $BASH_SOURCE test1
-source /usr/local/bin/set_remove_rules.sh &
+source /usr/local/bin/log_details.sh $BASH_SOURCE "Setting_flash_paths"
+source /usr/local/bin/set_remove_rules.sh 
 
 usb_flash () {
 
     #time for the kernel: load usb drivers
-    sleep 1
+    sleep 1        
         
-    exit 0
-    
 }
 
-#call export_paths function
-#export_paths 
-#call log_details function
-#log_details $0
 #call usb_flash function
 usb_flash
-#call check_interface function
-#check_interface
-#call set_remove_rules function
-#set_remove_rules
+
 

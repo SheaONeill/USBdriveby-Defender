@@ -126,41 +126,39 @@ fi
 echo "In .bashrc Now!"
 #
 #set the log path variable
-export LOG_PATH="/var/log/driveby_defender/"
-export PATH_LOG_NAME="log_path.log"
-##get value from check_interface_class.sh
-#source /usr/local/bin/check_interface_class.sh 
-#export DEVICE_DRIVER
+LOG_PATH="/var/log/driveby_defender/"
 
-#check if keyboard is inserted
-
-
-#need to change this to to check if keyboard_flag is set to 0 or 1
+#check if keyboard_flag exists
 if [ -f ${LOG_PATH}keyboard_flag ]; then
+    #script import to get paths and log details
+    source /usr/local/bin/export_paths.sh "63-usb-kbd.rules" "keyboard_details.log" "/sys/bus/usb/drivers/usbhid/" "keyboard_flag"
+    source /usr/local/bin/log_details.sh $BASH_SOURCE "Setting_keyboard_paths"
     #check to see if flag is set
-   if  [[ $(head -1 ${LOG_PATH}keyboard_flag) == 1 ]] ;then
-   # if [ grep 1 ${LOG_PATH}keyboard_flag ]; then 
-        echo "A Keyboard Device has been Detected!"
+   if  [[ $(head -1 ${LOG_PATH}${FLAG}) == 1 ]] ;then
+        echo "A ${FLAG} has been Detected!"
 	    export DEVICE_PATH="/sys/bus/usb/drivers/usbhid/"
         export DEVICE_LOG_NAME="keyboard_details.log"
         export DEVICE_DRIVER_LOG_NAME="device_driver.log"            
               
 	    #call get_input.sh
         /usr/local/bin/get_input.sh
-    elif  [[ $(head -1 ${LOG_PATH}keyboard_flag) == 0 ]] ;then
-        echo "No Keyboard Flag is set!!"
+    elif  [[ $(head -1 ${LOG_PATH}${FLAG}) == 0 ]] ;then
+        echo "No ${FLAG} is set!!"
     fi
 fi
 #
-#check if flash_flag is set to 0 or 1
+#check if flash_flag exists
 if [ -f ${LOG_PATH}flash_flag ] ; then
+    #script import to get paths and log details
+    source /usr/local/bin/export_paths.sh "81-usb-flash.rules" "flash_details.log" "/sys/bus/usb/drivers/usb-storage/" "flash_flag"
+    source /usr/local/bin/log_details.sh $BASH_SOURCE "Setting_flash_paths"
     #check to see if flag is set
-    if  [[ $(head -1 ${LOG_PATH}flash_flag) == 1 ]] ;then
-	    echo "A Flash Device has been Detected!"
+    if  [[ $(head -1 ${LOG_PATH}${FLAG}) == 1 ]] ;then
+	    echo "A ${FLAG} has been Detected!"
 	    #call get_input.sh
         /usr/local/bin/get_input.sh
-    elif  [[ $(head -1 ${LOG_PATH}flash_flag) == 0 ]] ;then
-        echo "No Flash Flag is set!"
+    elif  [[ $(head -1 ${LOG_PATH}${FLAG}) == 0 ]] ;then
+        echo "No ${FLAG}  is set!"
     fi
 #
 else

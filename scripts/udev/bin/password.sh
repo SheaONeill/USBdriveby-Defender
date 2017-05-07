@@ -8,4 +8,10 @@
 #---------------------
 
 #encrypt password
-decryption=$(mkpasswd --method=sha512 --salt=$salt $pass )
+encrypt_password () {
+    decryption=$(mkpasswd --method=sha512 --salt=$salt $pass )
+    #finish this
+}
+
+#call encrypt_password function
+encrypt_password

@@ -9,7 +9,6 @@ GET_SETUP_PATH="$(pwd)"
 echo "GET_SETUP_PATH: ${GET_SETUP_PATH}"
 PARENTDIR="$(dirname "${GET_SETUP_PATH}")/"
 echo "PARENTDIR: ${PARENTDIR}"
-read a
 LOCAL_BIN_PATH="/usr/local/bin/"
 LOCAL_RULES_PATH="/etc/udev/rules.d/"
 BASHRC_PATH="$HOME/.bashrc"
@@ -24,7 +23,6 @@ rules_setup () {
     echo -e "\nPaths From: Rules:${SETUP_RULES_PATH} \nLocal Bin  ${SETUP_BIN_PATH} \n.bashrc: ${PARENTDIR}"
     ls  ${SETUP_RULES_PATH} ;ls ${SETUP_BIN_PATH};ls ${PARENTDIR}
     echo "Copying ${SETUP_RULES_PATH}* to ${LOCAL_RULES_PATH}}"
-    echo "press ENTER to continue"; read a
     cp "${SETUP_RULES_PATH}"* ${LOCAL_RULES_PATH}
     ls -la ${LOCAL_RULES_PATH}
     #reload rules: 
@@ -80,6 +78,7 @@ get_db_details () {
 #get dependencies 
 check_dependencies () {
     #todo check alldependencies at the same time
+    #dont call this it spawns 100's of shells needs to be fixed!
     #ref: http://stackoverflow.com/a/592649
     if which bc >/dev/null; then echo "bc is already installed............."
     else
@@ -143,24 +142,38 @@ check_dependencies () {
         #recall function
         check_dependencies
         fi
-    fi
-    
-    
+    fi    
     
 echo "Press Enter to continue";read a
 }
 
- main () {
-     #call check_dependencies function
-     check_dependencies
-     #call rules_setup function
+main () {
+    echo -e "\nCheck Dependencies?"
+    echo -e "\nDon't call this it spawns 100's of shells needs to be fixed!"   
+    #call confirm function
+    confirm
+    #call check_dependencies function
+    check_dependencies
+    echo -e "\nSetup Rules?"
+    #call confirm function
+    confirm
+    #call rules_setup function
      rules_setup
-     #call copy_scripts function
-     copy_scripts
-     #call get_db_details function
-     get_db_details
-     #call setup_database function
-     setup_database   
+     echo -e "\nCopy Scripts?"
+    #call confirm function
+    confirm
+    #call copy_scripts function
+    copy_scripts
+    echo -e "\nGet Database Details?"
+    #call confirm function
+    confirm
+    #call get_db_details function
+    get_db_details
+    echo -e "\nSetup Database?"
+    #call confirm function
+    confirm
+    #call setup_database function
+    setup_database   
 }
 
 main "$@"

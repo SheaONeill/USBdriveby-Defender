@@ -10,7 +10,7 @@ ARGS=4
 # exit code 65 data format error
 ERR_CODE=65
 MYSQL=`which mysql`
-echo "test" $# $1 $2 $3 $4
+echo "Arguments supplied:" $# $1 $2 $3 $4
   
 CTDB="CREATE DATABASE $2;"
 GUSG="GRANT USAGE ON $2.* TO $3@$1 IDENTIFIED BY '$4';"

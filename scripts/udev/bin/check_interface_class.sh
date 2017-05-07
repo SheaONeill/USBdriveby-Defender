@@ -23,7 +23,7 @@ check_interface () {
                 #store device driver node name in file 
                 echo -e "${DEVICE_DRIVER}"> ${LOG_PATH}${DEVICE_DRIVER_LOG_NAME}
                 #set flag
-                echo 1 > ${LOG_PATH}keyboard_flag
+                echo 1 > ${LOG_PATH}${FLAG}
                             
                 
             #check for interface class HID (0x08) usb_storage protocol (0x50)
@@ -36,7 +36,7 @@ check_interface () {
                 #store device driver node name in file 
                 echo -e "${DEVICE_DRIVER}"> ${LOG_PATH}${DEVICE_DRIVER_LOG_NAME}
                 #set flag
-                echo 1 > ${LOG_PATH}flash_flag
+                echo 1 > ${LOG_PATH}${FLAG}
 
             fi
 #testing
@@ -48,5 +48,5 @@ check_interface () {
 }
 #call check_interface
 check_interface
-source /usr/local/bin/log_details.sh $BASH_SOURCE test2
+source /usr/local/bin/log_details.sh $BASH_SOURCE "Checking_Interfaces"
 
