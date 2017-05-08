@@ -24,17 +24,17 @@ USRT="CREATE TABLE IF NOT EXISTS user (
     password VARCHAR(64),
     email VARCHAR(30)
     );"
-IUSRT="INSERT INTO user (username,password,email) 
-     VALUES ('somename', 'somehashedpassword', 'someemailaddress');"
+#IUSRT="INSERT INTO user (username,password,email) 
+    # VALUES ('${uname}', '${hashpass}, '${uemail}');"
 BLKT="CREATE TABLE IF NOT EXISTS blacklist (
     device_id INT AUTO_INCREMENT PRIMARY KEY,
     vendor_id VARCHAR(4),
     product_id VARCHAR(4),
     device_type VARCHAR(30)
     );"
-IBLKT="INSERT INTO blacklist (vendor_id,product_id,device_type) 
-     VALUES ('0718', '070a', 'Imation Corp'),
-     ('413c','2003','Dell Computer Corp. Keyboard');"
+#IBLKT="INSERT INTO blacklist (vendor_id,product_id,device_type) 
+     #VALUES ('0718', '070a', 'Imation Corp'),
+     #('413c','2003','Dell Computer Corp. Keyboard');"
 ATKLG="CREATE TABLE IF NOT EXISTS attack_log (
     attack_id INT AUTO_INCREMENT PRIMARY KEY,
     device_id INT, 
@@ -48,7 +48,7 @@ ATKLG="CREATE TABLE IF NOT EXISTS attack_log (
     time DATETIME NOT NULL DEFAULT NOW()
     );"
 
-SQL="${CTDB}${GUSG}${GPLV}${FPLV}${VRFY}${UDB}${USRT}${IUSRT}${BLKT}${IBLKT}${ATKLG}"
+SQL="${CTDB}${GUSG}${GPLV}${FPLV}${VRFY}${UDB}${USRT}${BLKT}${ATKLG}"
 
 #check if all arguments are satisfied  
 if [ $# -ne $ARGS ]

@@ -3,7 +3,7 @@ SUBSYSTEM!="input", GOTO="xorg_xkb_end"
 KERNEL!="event*", GOTO="xorg_xkb_end"
 #ATTR{idVendor}=="1bcf", GOTO="my_media_automount_end"
 #ATTR{idProduct}=="2883", GOTO="my_media_automount_end"
-echo "In udev rules">>/var/log/driveby_defender/udev.log
+
 #added by me
 ACTION=="add", ENV{ID_INPUT_KEYBOARD}=="1", RUN+="/usr/local/bin/usb_keyboard_udev.sh"
 

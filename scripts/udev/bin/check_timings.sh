@@ -66,10 +66,10 @@ echo $(( total_taken / count )) >> ${LOG_PATH}keystroke_averages.log
         if [ -f ${LOG_PATH}${FLAG} ]; then
             echo "resetting keyboard_flag to 1"
             #set flag to 1 (non-human)
-	        echo 1 > ${LOG_PATH}keyboard_flag
-		else
-		    echo -e "\nno ${FLAG} file found"	
-	    fi	
+            echo 1 > ${LOG_PATH}keyboard_flag
+        else
+            echo -e "\nno ${FLAG} file found"	
+        fi	
     #archive logs
     tar -zcvf "${LOG_PATH}attack_log_$(date '+%Y_%m_%d').tar.gz" ${LOG_PATH}*
     #call countermeasures

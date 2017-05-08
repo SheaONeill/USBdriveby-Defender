@@ -4,7 +4,7 @@
 #
 # Check Interface
 # This script is run to check the description
-# of the device insertered and set flag
+# of the device inserted and set flag
 #---------------------
 
 check_interface () {
@@ -19,7 +19,7 @@ check_interface () {
                 DEVICE_DRIVER=$(basename ${dev})
                 #strore details of device in log file
                 dmesg | grep $(echo "${DEVICE_DRIVER}" | cut -d: -f1) | grep Product | tail -n 3 > ${LOG_PATH}${DEVICE_LOG_NAME}
-                      
+                                      
                 #store device driver node name in file 
                 echo -e "${DEVICE_DRIVER}"> ${LOG_PATH}${DEVICE_DRIVER_LOG_NAME}
                 #set flag
@@ -44,7 +44,9 @@ check_interface () {
 #udevadm monitor --property >${LOG_PATH}monitor.log
         fi
     done
-
+    
+#call get_specific_details
+. /usr/local/bin/get_specific_details.sh
 }
 #call check_interface
 check_interface

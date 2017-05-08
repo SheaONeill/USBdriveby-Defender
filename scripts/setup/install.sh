@@ -75,6 +75,20 @@ get_db_details () {
     read pass    
 }
 
+get_user_info () {
+#get admin email and save to file
+#application password for smpt server store in file encrypt file
+
+#get name
+#get email
+#get password
+#call hash function
+#run query to populate table
+#run query to retrieve user id 
+#use email var
+#log details to hidden user file in home dir
+}
+
 #get dependencies 
 check_dependencies () {
     #todo check alldependencies at the same time
