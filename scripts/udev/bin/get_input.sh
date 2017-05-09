@@ -14,8 +14,12 @@ count=1
 trap "authenticate_human" 2 
 
 authenticate_human() {
-echo -e "\n\nCtrl C Detected!\nDo the password stuff here"
-#use hash as this is a security course after all.
+    echo -e "\n\nCtrl C Detected!\nDo the password stuff here"
+    #use hash as this is a security course after all.
+    read -s -p "Enter Password: " pass
+    #call password script
+    #todo creat hidden 
+    . /usr/local/bin/password.sh $pass
 trap "" 2 
 exit
 }	
@@ -25,9 +29,17 @@ read_input () {
     while true; do 
         input_char=$(dd bs=1 count=1 2>/dev/null; echo .);
         time_now=$(date  +%N)
-        echo "This is ${count} charcarcter captured at $time_now"
-        #store this time in array
-        keystroke[${count}]=${time_now}
+        #time_now=$(date +%F\ %T\ %N)  
+        #log this time for database (NOTE this is slowing dow speed and duck goes not fail test
+        #maybe do this in check times!!!
+        #if [ "${count}" -eq 1 ];
+           # then
+                # echo $(echo "$time_now" | cut -d' ' -f-1,2) >${LOG_PATH}datetime.log
+        #fi    
+        echo "This is ${count} charcarcter captured at ${time_now}"
+        keystroke[${count}]="$time_now"     
+        #strip the nanoseconds and store in array
+        #keystroke[${count}]=$(echo "$time_now" | cut -d' ' -f3)      
         echo -e "\nKeystroke Array Var ${count}: ${keystroke[${count}]}"
         #remove period
         input_char=${input_char%?} 	

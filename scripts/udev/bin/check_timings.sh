@@ -63,15 +63,14 @@ echo $(( total_taken / count )) >> ${LOG_PATH}keystroke_averages.log
         echo -e "\nNon Human Detected!"
 		        
 		#double-check that flag is set
-        if [ -f ${LOG_PATH}${FLAG} ]; then
-            echo "resetting keyboard_flag to 1"
+        #if [ -f ${LOG_PATH}${FLAG} ]; then
+            #echo "resetting keyboard_flag to 1"
             #set flag to 1 (non-human)
-            echo 1 > ${LOG_PATH}keyboard_flag
-        else
-            echo -e "\nno ${FLAG} file found"	
-        fi	
-    #archive logs
-    tar -zcvf "${LOG_PATH}attack_log_$(date '+%Y_%m_%d').tar.gz" ${LOG_PATH}*
+            #echo 1 > ${LOG_PATH}keyboard_flag
+        #else
+            #echo -e "\nno ${FLAG} file found"	
+        #fi	
+    
     #call countermeasures
     . /usr/local/bin/countermeasures.sh
 	                    
@@ -82,9 +81,8 @@ echo $(( total_taken / count )) >> ${LOG_PATH}keystroke_averages.log
         #run command from log file
         bash ${LOG_PATH}${CHARACTER_LOG} 
         echo 0 > ${LOG_PATH}${FLAG}
-        #archive logs
-        #tar -zcvf "${LOG_PATH}benign_log_$(date '+%Y_%m_%d').tar.gz" ${LOG_PATH}*  
-        cd ${LOG_PATH} && tar -zcvf "${LOG_PATH}benign_log_$(date '+%Y_%m_%d').tar.gz" *                              
+        #call archive logs
+        . /usr/local/bin/archive_logs "human"     
     fi             
         
 }       

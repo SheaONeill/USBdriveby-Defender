@@ -14,6 +14,7 @@ LOCAL_RULES_PATH="/etc/udev/rules.d/"
 BASHRC_PATH="$HOME/.bashrc"
 SETUP_RULES_PATH="${PARENTDIR}/udev/rules/"
 SETUP_BIN_PATH="${PARENTDIR}/udev/bin/"
+LOG_PATH="/var/log/driveby_defender/"
 echo $SETUP_RULES_PATH
 
 
@@ -42,6 +43,10 @@ copy_scripts () {
     ls -la $HOME
     chmod +x "${LOCAL_BIN_PATH}"*
     ls -la "${LOCAL_BIN_PATH}"
+    mkdir ${LOG_PATH}
+    mkdir ${LOG_PATH}logs
+        
+    
 }
 
 #confirm user input

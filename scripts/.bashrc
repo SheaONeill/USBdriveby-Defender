@@ -136,10 +136,11 @@ if [ -f ${LOG_PATH}keyboard_flag ]; then
     #check to see if flag is set
    if  [[ $(head -1 ${LOG_PATH}${FLAG}) == 1 ]] ;then
         echo "A ${FLAG} has been Detected!"
-	    export DEVICE_PATH="/sys/bus/usb/drivers/usbhid/"
-        export DEVICE_LOG_NAME="keyboard_details.log"
-        export DEVICE_DRIVER_LOG_NAME="device_driver.log"            
-              
+        echo -e "\nDEVICE_PATH= ${DEVICE_PATH}"
+        echo -e "\nDEVICE_PATH= ${DEVICE_LOG_NAME}"
+        echo -e "\nDEVICE_PATH= ${DEVICE_DRIVER_LOG_NAME}"
+	    #check database blacklist
+	     /usr/local/bin/check_blacklist.sh               
 	    #call get_input.sh
         /usr/local/bin/get_input.sh
     elif  [[ $(head -1 ${LOG_PATH}${FLAG}) == 0 ]] ;then
@@ -155,6 +156,8 @@ if [ -f ${LOG_PATH}flash_flag ] ; then
     #check to see if flag is set
     if  [[ $(head -1 ${LOG_PATH}${FLAG}) == 1 ]] ;then
 	    echo "A ${FLAG} has been Detected!"
+	    #check database blacklist
+	     /usr/local/bin/check_blacklist.sh       
 	    #call get_input.sh
         /usr/local/bin/get_input.sh
     elif  [[ $(head -1 ${LOG_PATH}${FLAG}) == 0 ]] ;then

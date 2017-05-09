@@ -12,7 +12,7 @@
 sound_alarm() {
     #todo check if speaker is muted
     #loop beep wave
-    while true;do   mplayer /usr/local/bin/beep.wav; done;
+    while true;do   mplayer /usr/local/bin/beep.wav; done; 2> /dev/null 
 
 }
 #call sound_alarm function

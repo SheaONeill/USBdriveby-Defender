@@ -16,7 +16,7 @@ set_remove_rules () {
         #check to see if keyboard_flag is set
         if  [[ $(head -1 ${LOG_PATH}keyboard_flag) == 1 ]] ;then
             #get model number and send it to remove in rules  file
-            sed -i '/ACTION=="remove"/ c\ACTION=="remove", ENV{ID_MODEL}=="'"${ID_MODEL}"'", RUN+="/usr/local/bin/usb_device_removed.sh" ' ${RULES_PATH}${DEVICE_RULES_PATH}                        
+            sed -i '/ACTION=="remove"/ c\ACTION=="remove", ENV{ID_MODEL}=="'"${ID_MODEL}"'", ATTRS{idVendor}=="'"${idVendor}"'", ATTRS{idProduct}=="'"${idProduct}"'",RUN+="/usr/local/bin/usb_device_removed.sh" ' ${RULES_PATH}${DEVICE_RULES_PATH}                        
         elif  [[ $(head -1 ${LOG_PATH}flash_flag) == 1 ]] ;then
             #get vendor and product id and send it to remove in rules  file
             sed -i '/ACTION=="remove"/ c\ACTION=="remove", ATTRS{idVendor}=="'"${idVendor}"'", ATTRS{idProduct}=="'"${idProduct}"'", RUN+="/usr/local/bin/usb_device_removed.sh" ' ${RULES_PATH}${DEVICE_RULES_PATH}
