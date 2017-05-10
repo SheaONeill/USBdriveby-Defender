@@ -19,7 +19,7 @@ authenticate_human() {
     read -s -p "Enter Password: " pass
     #call password script
     #todo creat hidden 
-    . /usr/local/bin/password.sh $pass
+    . /usr/local/bin/check_password.sh $pass
 trap "" 2 
 exit
 }	

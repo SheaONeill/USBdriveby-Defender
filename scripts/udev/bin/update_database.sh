@@ -37,11 +37,26 @@ update_database () {
         query="DELETE FROM blacklist WHERE ${vendor_id}='$(<$2${VENDOR_ID})' AND ${product_id}='$(<$2${PRODUCT_ID})';"
             
     elif [ "$1" == "add_user" ];then
-        query="INSERT INTO user (username,password_email) 
-         VALUES ('$(<${HOME}${USERNAME})','$(<${HOME}${PASSWORD})','$(<${HOME}${EMAIL})');"
+    
+    echo -e "\nin database args are $1 $2 $3 $4"
+        query="INSERT INTO user (username,password,email) 
+         VALUES ('$2','$3','$4');"
+         
+         #run query and supress column name  
+        mysql -N -h $host -u $name -p$pass $dbname <<<$query
 
-        query_id="SELECT ${user_id} FROM user WHERE ${username}='$(<${HOME}${USERNAME})' AND ${email}='$(<${HOME}${EMAIL})';"
+        query_id="SELECT user_id FROM user WHERE username='$2' AND email='$4';"
+        
+        #run query and save result
+        mysql -N -h $host -u $name -p$pass $dbname <<<$query_id >$HOME/.user_id
 
+    elif [ "$1" == "check_password" ];then
+    echo -e "\nin database args are $1 $2 $3"
+                  
+        query_id="SELECT password FROM user WHERE user_id='$(<$2/$3)';"
+        
+        #run query and save result
+        mysql -N -h $host -u $name -p$pass $dbname <<<$query_id >$HOME/.password
 
     elif [ "$1" == "add_attack" ];then
         query="INSERT INTO blacklist (vendor_id,product_id,device_type) 
@@ -61,4 +76,4 @@ update_database () {
 }
 
 #call update_database function
-update_database $1 $2 $3
+update_database $1 $2 $3 $4
