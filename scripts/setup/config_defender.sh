@@ -3,7 +3,7 @@
 # USB Driveby Defender
 #
 # Get Standard Input
-# This script runs mplayer and plays alarm sound
+# This cofigures ssmpt config file
 # 
 #---------------------
 
