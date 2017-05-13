@@ -5,7 +5,6 @@
 # Get Standard Input
 # This script runs mplayer and plays alarm sound
 # 
-# 
 #---------------------
 
 config_defender () {
@@ -24,8 +23,6 @@ config_ssmtp () {
     sed -i 's/#FromLineOverride\=YES/FromLineOverride\=YES/' ${ssmtp_config}
     #append details
     echo -e "\n#Added by Driveby-Defender\nAuthUser=${admin_email}\nAuthPass=${admin_pass_1}\nmailhub=${mail_server}\nUseSTARTTLS=YES" >>${ssmtp_config}
-    
-    ls $SSMPT_PATH
 
 }
 
