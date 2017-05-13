@@ -1,6 +1,6 @@
-ACTION!="add|change", GOTO="xorg_xkb_end"
-SUBSYSTEM!="input", GOTO="xorg_xkb_end"
-KERNEL!="event*", GOTO="xorg_xkb_end"
+#ACTION!="add|change", GOTO="xorg_xkb_end"
+#SUBSYSTEM!="input", GOTO="xorg_xkb_end"
+#KERNEL!="event*", GOTO="xorg_xkb_end"
 #ATTR{idVendor}=="1bcf", GOTO="my_media_automount_end"
 #ATTR{idProduct}=="2883", GOTO="my_media_automount_end"
 
@@ -8,11 +8,11 @@ KERNEL!="event*", GOTO="xorg_xkb_end"
 ACTION=="add", ENV{ID_INPUT_KEYBOARD}=="1", RUN+="/usr/local/bin/usb_keyboard_udev.sh"
 
 # import keyboard layout from /etc/default/keyboard
-ENV{ID_INPUT_KEY}=="?*", IMPORT{file}="/etc/default/keyboard"
+#ENV{ID_INPUT_KEY}=="?*", IMPORT{file}="/etc/default/keyboard"
 
-LABEL="xorg_xkb_end"
-ACTION=="remove", ENV{ID_MODEL}=="HID Keyboard", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2401",RUN+="/usr/local/bin/usb_device_removed.sh" 
-echo "In udev rules">>/var/log/driveby_defender/udev.log
+#LABEL="xorg_xkb_end"
+ACTION=="remove", ENV{ID_MODEL}=="null", RUN+="/usr/local/bin/usb_device_removed.sh" 
+
 
 
 

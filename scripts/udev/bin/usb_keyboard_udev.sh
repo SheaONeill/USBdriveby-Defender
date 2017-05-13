@@ -8,7 +8,7 @@
 #---------------------------------------------------------------------
 
 #script imports
-source /usr/local/bin/export_paths.sh "63-usb-kbd.rules" "keyboard_details.log" "/sys/bus/usb/drivers/usbhid/" "keyboard_flag"
+source /usr/local/bin/export_paths.sh "63-usb-kbd.rules" "keyboard_details.log" "/sys/bus/usb/drivers/usbhid/" ".keyboard_flag"
 source /usr/local/bin/check_interface_class.sh
 source /usr/local/bin/log_details.sh $BASH_SOURCE "Setting_keyboard_paths"
 source /usr/local/bin/set_remove_rules.sh 

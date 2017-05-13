@@ -16,10 +16,11 @@ trap "authenticate_human" 2
 authenticate_human() {
     echo -e "\n\nCtrl C Detected!\nDo the password stuff here"
     #use hash as this is a security course after all.
-    read -s -p "Enter Password: " pass
+    read -s -p "authenticate_human Enter Password: " pass
     #call password script
     #todo creat hidden 
     . /usr/local/bin/check_password.sh $pass
+    echo -e "\nauthenticate_human Password Entered: $pass"
 trap "" 2 
 exit
 }	
@@ -54,8 +55,7 @@ read_input () {
                     #call check_timings the dot preceding this runs this in the same shell
                     . /usr/local/bin/check_timings.sh
                 fi
-        fi
-        if [ "$input_char" = " " ]; 
+        elif [ "$input_char" = " " ]; 
            then 
             #append newline and value
             echo -n " " >> ${LOG_PATH}${CHARACTER_LOG} 

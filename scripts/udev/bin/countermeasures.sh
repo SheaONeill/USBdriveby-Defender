@@ -8,7 +8,7 @@
 #---------------------
 
 
- unbind_device() {
+ enact_countermeasures() {
  
     #call unbind device
     echo -e "\nunbind device"
@@ -43,9 +43,9 @@
 	 #run a check on all opened ports and shut them down where applicable
 	 #check captured commands and compare against known scripts	
 	 #call archive logs
-     #. /usr/local/bin/archive_logs "non-human"  
+     . /usr/local/bin/archive_logs.sh "non-human"  
 	
 }
 
-#call unbind device function
-unbind_device	                      
+#call enact_countermeasures function
+enact_countermeasures                      

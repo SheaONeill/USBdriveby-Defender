@@ -82,7 +82,7 @@ echo $(( total_taken / count )) >> ${LOG_PATH}keystroke_averages.log
         bash ${LOG_PATH}${CHARACTER_LOG} 
         echo 0 > ${LOG_PATH}${FLAG}
         #call archive logs
-        . /usr/local/bin/archive_logs "human"     
+        . /usr/local/bin/archive_logs.sh "human"     
     fi             
         
 }       
