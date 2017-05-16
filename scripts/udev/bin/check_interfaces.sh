@@ -1,13 +1,15 @@
-#!/bin/bash
+#!/bin/bash 
 #
-# USB Driveby Defender
-#
-# Check Interface
-# This script is run to check the description
-# of the device inserted and set flag
-#---------------------
+#Application:   USB Driveby Defender
+#Authors:         Shea O'Neill, Paddy Cronan
+#Date:              20/03/17
+#Version:         1.0
+#Title:               check_interfaces.sh
+#Description:   This script checks the description
+#                        of the device inserted and sets flag
+#----------------------------------------------------------------------
+check_interfaces () {
 
-check_interface () {
     #ref: http://serverfault.com/a/126325
     for dev in /sys/bus/usb/devices/*-*
     do
@@ -39,16 +41,18 @@ check_interface () {
                 echo 1 > ${LOG_PATH}${FLAG}
 
             fi
-#testing
-#udevadm info -q all -p /sys/bus/usb/devices/${DEVICE_DRIVER} >${LOG_PATH}getdetails.log
-#udevadm monitor --property >${LOG_PATH}monitor.log
+    #testing
+    #udevadm info -q all -p /sys/bus/usb/devices/${DEVICE_DRIVER} >${LOG_PATH}getdetails.log
+    #udevadm monitor --property >${LOG_PATH}monitor.log
         fi
     done
     
-#call get_specific_details
-. /usr/local/bin/get_specific_details.sh
+    #call get_specific_details
+    . /usr/local/bin/get_specific_details.sh
+
 }
 #call check_interface
-check_interface
+check_interfaces
 source /usr/local/bin/log_details.sh $BASH_SOURCE "Checking_Interfaces"
+source /usr/local/bin/set_remove_rules.sh 
 

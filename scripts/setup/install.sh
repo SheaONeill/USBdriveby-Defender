@@ -1,9 +1,12 @@
-#!/bin/bash
+#!/bin/bash 
 #
-# USB Driveby Defender
-#
-#
-#---------------------
+#Application:   USB Driveby Defender
+#Authors:         Shea O'Neill, Paddy Cronan
+#Date:              20/03/17
+#Version:         1.0
+#Title:               install.sh
+#Description:   This script sets up the application
+#-------------------------------------------------------------------------------------
 
 GET_SETUP_PATH="$(pwd)"
 PARENTDIR="$(dirname "${GET_SETUP_PATH}")/"
@@ -41,6 +44,7 @@ main () {
     confirm "" ". ./setup_database.sh" "Setup Database?"
     #get user info
     confirm "" ". ./get_user_info.sh" "Get User Info?"
+    #
     
           
 }

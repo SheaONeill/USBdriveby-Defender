@@ -1,4 +1,12 @@
-#!/bin/bash
+#!/bin/bash 
+#
+#Application:   USB Driveby Defender
+#Authors:         Shea O'Neill, Paddy Cronan
+#Date:              20/03/17
+#Version:         1.0
+#Title:               setup_database.shis for tests
+#--------------------------------------------------------------------
+
 
 #call check_dependencies function
 GET_SETUP_PATH="$(pwd)"

@@ -1,16 +1,13 @@
-#!/bin/bash
+#!/bin/bash 
 #
-# USB Driveby Defender
-#
-# Get Standard Input
-# This script locks the screen
-# 
-# 
-#---------------------
+#Application:   USB Driveby Defender
+#Authors:         Shea O'Neill, Paddy Cronan
+#Date:              20/03/17
+#Version:         1.0
+#Title:              lock_down.sh
+#Description:  This script locks the screen
+#----------------------------------------------------------
 
-#todo maybe once admin is contacted close all ports or disable other device drivers eg networking
-#othe possible idea scan for newly opened ports
-#lock_down
 lock_down() {
 
     #this will lock the screen on gnome (more research for other desktops eg KDE)

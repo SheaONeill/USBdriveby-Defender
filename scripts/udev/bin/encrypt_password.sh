@@ -1,20 +1,18 @@
-#!/bin/bash
+#!/bin/bash 
 #
-# USB Driveby Defender
-#
-# encrypt password
-# 
-#
-#---------------------
-
+#Application:   USB Driveby Defender
+#Authors:         Shea O'Neill, Paddy Cronan
+#Date:              20/03/17
+#Version:         1.0
+#Title:               encrypt_password.sh
+#Description:   This script hashes password
+#------------------------------------------------------------
 
 encrypt_password () {
-   # decryption=$(mkpasswd --method=sha-512 --salt=$SALT $1 )
+
    password=$(mkpasswd --method=sha-512 --salt=${admin_pass_1} ${user_pass_1} )
    echo -e "\nSalt: ${admin_pass_1} Hashed Password: ${password}"
-   #to do this is temporary 
-   #echo $password > ${LOG_PATH}.password
-   
+      
 }
 
 #call encrypt_password function

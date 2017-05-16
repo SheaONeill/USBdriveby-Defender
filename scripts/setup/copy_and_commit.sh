@@ -1,9 +1,13 @@
-#!/bin/bash +x
+#!/bin/bash 
 #
-# USB Driveby Defender
-#
-#
-#---------------------
+#Application:   USB Driveby Defender
+#Authors:         Shea O'Neill, Paddy Cronan
+#Date:              20/03/17
+#Version:         1.0
+#Title:               copy_and_commit.sh
+#Description:   This script copys files to git repo
+#-------------------------------------------------------------------------
+
 
 git_bash () {
     #copy rules to git repo

@@ -122,62 +122,40 @@ if [ -f ~/.bash_driveby_defender ]; then
     . ~/.bash_driveby_defender
 fi
 #
-#check  values when shells are executed
-echo "In .bashrc Now!"
-#
 #set the log path variable
 LOG_PATH="/var/log/driveby_defender/"
 
 #check if .keyboard_flag exists
 if [ -f ${LOG_PATH}.keyboard_flag ]; then
-echo -e "\nTest in if keyboard flag exists"
     #script import to get paths and log details
     source /usr/local/bin/export_paths.sh "63-usb-kbd.rules" "keyboard_details.log" "/sys/bus/usb/drivers/usbhid/" ".keyboard_flag"
-   
-    echo -e "\nTest in if after exports"
-    
     #check to see if flag is set
-   if  [[ $(head -1 ${LOG_PATH}${FLAG}) == 1 ]] ;then
-   echo -e "\nTest in if keyboard flag equals 1"
-    source /usr/local/bin/log_details.sh $BASH_SOURCE "Setting_keyboard_paths"
-    echo -e "\nTest in if after logs"
-        echo "A ${FLAG} has been Detected!"
-        #echo -e "\nDEVICE_PATH= ${DEVICE_PATH}"
-        #echo -e "\nDEVICE_PATH= ${DEVICE_LOG_NAME}"
-        #echo -e "\nDEVICE_PATH= ${DEVICE_DRIVER_LOG_NAME}"
-	    #check database blacklist
+    if  [[ $(head -1 ${LOG_PATH}${FLAG}) == 1 ]] ;then
+        source /usr/local/bin/log_details.sh $BASH_SOURCE "Setting_keyboard_paths"
+        #check database blacklist
 	     /usr/local/bin/check_blacklist.sh               
 	    #call get_input.sh
         /usr/local/bin/get_input.sh
     elif  [[ $(head -1 ${LOG_PATH}${FLAG}) == 0 ]] ;then
-        echo "No ${FLAG} is set!!"
     fi
 fi
 #
 #check if .flash_flag exists
 if [ -f ${LOG_PATH}.flash_flag ] ; then
-    echo -e "\nTest in if flash flag exists"
-     
     #script import to get paths and log details
     source /usr/local/bin/export_paths.sh "81-usb-flash.rules" "flash_details.log" "/sys/bus/usb/drivers/usb-storage/" ".flash_flag"
      
     #check to see if flag is set
     if  [[ $(head -1 ${LOG_PATH}${FLAG}) == 1 ]] ;then
-	    echo -e "\nTest in if flash flag equals 1"
-	    source /usr/local/bin/log_details.sh $BASH_SOURCE "Setting_keyboard_paths"
-        echo -e "\nTest in if after logs"
-	    echo "A ${FLAG} has been Detected!"
-	    #check database blacklist
-	     /usr/local/bin/check_blacklist.sh       
+	    source /usr/local/bin/log_details.sh $BASH_SOURCE "Setting_flash_paths"
+        #check database blacklist
+        /usr/local/bin/check_blacklist.sh       
 	    #call get_input.sh
         /usr/local/bin/get_input.sh
     elif  [[ $(head -1 ${LOG_PATH}${FLAG}) == 0 ]] ;then
-        echo "No ${FLAG}  is set!"
-        
+             
     fi
-#
-else
-	echo "No Device has been Detected!"
+
 fi
 #reload rules so change will take affect
 udevadm control --reload-rules && udevadm trigger  

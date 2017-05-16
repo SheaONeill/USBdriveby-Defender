@@ -1,10 +1,13 @@
-#!/bin/bash
+#!/bin/bash 
 #
-# USB Driveby Defender
-#
-# Setup files
-#
-#---------------------
+#Application:   USB Driveby Defender
+#Authors:         Shea O'Neill, Paddy Cronan
+#Date:              20/03/17
+#Version:         1.0
+#Title:               setup_files.sh
+#Description:   This script sets up paths, files and folders 
+#-------------------------------------------------------------------------------
+
 
 
 rules_setup () {

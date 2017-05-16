@@ -1,12 +1,12 @@
-#!/bin/bash
+#!/bin/bash 
 #
-# USB Driveby Defender
-#
-# Unbind Device Driver
-# This script disables the driver
-# for the specific device
-# this should be called if threat is detected
-#---------------------
+#Application:   USB Driveby Defender
+#Authors:         Shea O'Neill, Paddy Cronan
+#Date:              20/03/17
+#Version:         1.0
+#Title:               unbind_device.sh
+#Description:   This script disables the device driver
+#------------------------------------------------------------------------
 
 unbind_device () {
     #check the path variables

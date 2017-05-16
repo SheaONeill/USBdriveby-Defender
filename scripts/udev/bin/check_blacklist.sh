@@ -1,13 +1,12 @@
-#!/bin/bash
+#!/bin/bash 
 #
-# USB Driveby Defender
-#
-# Check Databse Blacklist
-# This script calls update_database.sh
-# and passes three arguments
-# 
-#---------------------
-
+#Application:   USB Driveby Defender
+#Authors:         Shea O'Neill, Paddy Cronan
+#Date:              20/03/17
+#Version:         1.0
+#Title:               check_blacklist.sh
+#Description:   This script adds attack device to blacklist 
+#------------------------------------------------------------------------------
 
 check_blacklist () {
 
@@ -20,7 +19,7 @@ check_blacklist () {
         #check if device_id.log is empty
         if [[ -s ${LOG_PATH}blacklisted.log ]];then
            #call countermeasures
-            . /usr/local/bin/countermeasures.sh  
+            . /usr/local/bin/enact_countermeasures.sh  
         fi
         
     fi      

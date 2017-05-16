@@ -1,14 +1,13 @@
-#!/bin/bash
+#!/bin/bash 
 #
-# USB Driveby Defender
-#
-# Get Specific Details of device
-# This script pulls model name,
-# vendor and product ids from
-# the device log
-# store the values in seperate files
-#---------------------
-
+#Application:   USB Driveby Defender
+#Authors:         Shea O'Neill, Paddy Cronan
+#Date:              20/03/17
+#Version:         1.0
+#Title:              get_specific_details.sh
+#Description:  This script pulls model name, vendor and
+#                       product ids from the device log
+#------------------------------------------------------------------------------
 get_specific_details () {
 
     #cut the product and store in ID_MODEL variable

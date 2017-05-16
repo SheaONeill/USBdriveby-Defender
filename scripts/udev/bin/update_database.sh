@@ -1,12 +1,12 @@
-#!/bin/bash
+#!/bin/bash 
 #
-# USB Driveby Defender
-#
-# Blacklist Device
-# This script updates database,
-# 
-# 
-#---------------------
+#Application:   USB Driveby Defender
+#Authors:         Shea O'Neill, Paddy Cronan
+#Date:              20/03/17
+#Version:         1.0
+#Title:               update_database.sh
+#Description:   This script updates and queries database
+#------------------------------------------------------------------------------
 
 update_database () {
     
@@ -20,7 +20,7 @@ update_database () {
         echo -e "\nMySQL is running"
     fi
     
-    #testing database get these vars from file
+    #hardcoded for testing and demo only
     host="localhost"
     name="driveby"
     pass="defender"
@@ -30,20 +30,18 @@ update_database () {
     product_id="product_id"
 
     if [ "$1" == "check_database" ]; then
-        query_id="SELECT ${vendor_id},${product_id} FROM blacklist WHERE ${vendor_id}='$(<$2${VENDOR_ID})' AND ${product_id}='$(<$2${PRODUCT_ID})';"
+        query_id="SELECT ${vendor_id},${product_id} FROM blacklist WHERE ${vendor_id}='$(<$2${VENDOR_ID})' AND ${product_id}='$(<$2${PRODUCT_ID})';"     
+        #run query and supress column name     
         mysql -N -h $host -u $name -p$pass $dbname <<<$query_id >$2$3
 
     elif [ "$1" == "remove" ];then
         query="DELETE FROM blacklist WHERE ${vendor_id}='$(<$2${VENDOR_ID})' AND ${product_id}='$(<$2${PRODUCT_ID})';"
             
-    elif [ "$1" == "add_user" ];then
-    
-    echo -e "\nin database args are $1 $2 $3 $4"
-        query="INSERT INTO user (username,password,email) 
-         VALUES ('$2','$3','$4');"
-         
+    elif [ "$1" == "user" ];then
+         query="INSERT INTO user (username,password,email) 
+          VALUES ('$2','$3','$4');"         
          #run query and supress column name  
-        mysql -N -h $host -u $name -p$pass $dbname <<<$query
+         mysql -N -h $host -u $name -p$pass $dbname <<<$query
 
         query_id="SELECT user_id FROM user WHERE username='$2' AND email='$4';"
         
@@ -51,18 +49,17 @@ update_database () {
         mysql -N -h $host -u $name -p$pass $dbname <<<$query_id >$HOME/.user_id
 
     elif [ "$1" == "check_password" ];then
-    echo -e "\nin database args are $1 $2 $3"
-                  
         query_id="SELECT password FROM user WHERE user_id='$(<$2/$3)';"
+        echo "user id is $(<$2/$3)"
         
         #run query and save result
         mysql -N -h $host -u $name -p$pass $dbname <<<$query_id >$HOME/.password
 
     elif [ "$1" == "add_attack" ];then
         query="INSERT INTO blacklist (vendor_id,product_id,device_type) 
-         VALUES ('$(<$2${VENDOR_ID})','$(<$2${PRODUCT_ID})','$(<$2${MODEL_ID})');"
+        VALUES ('$(<$2${VENDOR_ID})','$(<$2${PRODUCT_ID})','$(<$2${MODEL_ID})');"
         #-N supress column name  
-        mysql -N -h $host -u $name -p$pass $dbname <<<$query
+        mysql -N -h $host -u $name -p$pass $dbname <<<$query 
         
         query_id="SELECT ${device_id} FROM blacklist WHERE ${vendor_id}='$(<$2${VENDOR_ID})' AND ${product_id}='$(<$2${PRODUCT_ID})';"
         mysql -N -h $host -u $name -p$pass $dbname <<<$query_id >$2$3
@@ -76,4 +73,4 @@ update_database () {
 }
 
 #call update_database function
-update_database $1 $2 $3 $4
+update_database $1 $2 $3 $4 $5

@@ -1,26 +1,29 @@
 #!/bin/bash 
 #
-# USB Driveby Defender
-#
-# Keyboard Udev
-# This script is run when a USB Keyboard is inserted
-# (see 63-usb-kbd.rules)
-#---------------------------------------------------------------------
-
-#script imports
-source /usr/local/bin/export_paths.sh "63-usb-kbd.rules" "keyboard_details.log" "/sys/bus/usb/drivers/usbhid/" ".keyboard_flag"
-source /usr/local/bin/check_interface_class.sh
-source /usr/local/bin/log_details.sh $BASH_SOURCE "Setting_keyboard_paths"
-source /usr/local/bin/set_remove_rules.sh 
+#Application:   USB Driveby Defender
+#Authors:         Shea O'Neill, Paddy Cronan
+#Date:              20/03/17
+#Version:         1.0
+#Title:               usb_keyboard_udev.sh
+#Description:   This script is run when a USB Keyboard is inserted
+#Note:              (see 63-usb-kbd.rules)
+#------------------------------------------------------------------------------------------
 
 usb_keyboard () {
 
-    #time for the kernel: load usb drivers
+    #time for the kernel: load drivers    
     sleep 1  
-    
-    #exit 0
+        
 }
 
-#call usb_keyboard function
-usb_keyboard
+#script imports
+if [ ! -f ${LOG_PATH}.keyboard_details.log ] ; then
+    source /usr/local/bin/export_paths.sh "63-usb-kbd.rules" "keyboard_details.log" "/sys/bus/usb/drivers/usbhid/" ".keyboard_flag"
+    source /usr/local/bin/check_interfaces.sh
+    source /usr/local/bin/log_details.sh $BASH_SOURCE "Setting_keyboard_paths"
+    #call usb_keyboard function
+    usb_keyboard
+fi
+
+
 
