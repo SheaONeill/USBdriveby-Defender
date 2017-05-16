@@ -11,12 +11,7 @@
 #contact_admin
 contact_admin(){
 
-    #harcoded for testing and demo
-    user_id="$(<$HOME/.user_id)"
-    device_id="$(tail -n1 ${LOG_PATH}device_id.log)"
-    email1="b00084432@gmail.com"
-    email2="jamesoneill14@whitehallcollege.com"
-    image="00000005.jpg"
+ 
     #sendmail
     echo -e "Attack Details\nID: ${user_id}\nDevice ID: ${device_id}" | mail -s "USB Attack " ${email1},${email2} -aFrom:'USBDriveby-Defender<a@a.a>'  -A ${LOG_PATH}${image}
     

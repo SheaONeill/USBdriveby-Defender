@@ -20,9 +20,7 @@ check_timings(){
 while  [ "${count}" -le "${count_limit}" ]
     do
         #add speeds
-        total_taken=$(( total_taken + keystroke[${count#0}] ))
-        echo -e "\nAverages: Total: $total_taken Divided by Count: $count = $(( total_taken / count ))" 
-                 
+        total_taken=$(( total_taken + keystroke[${count#0}] ))                         
         if [ ${count} -gt 1 ];then 
             #subtract previous time from current time and store in array
             speed[$(($count-1))]=$(echo "${keystroke[$count]} - ${keystroke[$count-1]}" | bc )
@@ -34,7 +32,7 @@ while  [ "${count}" -le "${count_limit}" ]
             fi  
             #add speeds
             total_diff=$(( total_diff + speed[$(($count-1))]))
-            avg_diff=$(( ${total_diff} / ${count} ))            
+            avg_diff=$(( ${total_diff} / ${count} ))     
         fi
         #increment counter
         count=$(($count+1));
@@ -49,13 +47,15 @@ echo $(( total_taken / count )) >> ${LOG_PATH}keystroke_averages.log
 	    #log averages 
         echo $(( total_taken / count )) >> ${LOG_PATH}keystroke_averages_alert.log
         echo $avg_diff >> ${LOG_PATH}difference_averages._alert.log	                
-	    echo -e "\nNon Human Detected! Enacting Countermeasures"		  
+	    echo -e "\nNon Human Detected! Enacting Countermeasures"	
+	    echo -e "\nIncoming speed ${avg_diff} is faster than limit ${limit}"    	  
         #call countermeasures
         . /usr/local/bin/enact_countermeasures.sh
 	                    
     else 
         #set flag to 0 (human)
         echo -e "\nHuman Detected!"
+         echo -e "\nIncoming speed ${avg_diff} is slower than limit ${limit}"    	
         #run command from log file
         bash ${LOG_PATH}${CHARACTER_LOG} 
         echo 0 > ${LOG_PATH}${FLAG}

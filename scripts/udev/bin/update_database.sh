@@ -20,14 +20,7 @@ update_database () {
         echo -e "\nMySQL is running"
     fi
     
-    #hardcoded for testing and demo only
-    host="localhost"
-    name="driveby"
-    pass="defender"
-    dbname="defender"
-    device_id="device_id"
-    vendor_id="vendor_id"
-    product_id="product_id"
+
 
     if [ "$1" == "check_database" ]; then
         query_id="SELECT ${vendor_id},${product_id} FROM blacklist WHERE ${vendor_id}='$(<$2${VENDOR_ID})' AND ${product_id}='$(<$2${PRODUCT_ID})';"     

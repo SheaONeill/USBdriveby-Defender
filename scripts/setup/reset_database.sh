@@ -39,10 +39,7 @@ for (( i=1; i<=5; i++ ));do
             ON DELETE CASCADE,
         time DATETIME NOT NULL DEFAULT NOW()
         );"
-    #harcoded for testing and demo only
-    query[5]="INSERT INTO user (username,password,email) 
-        VALUES ('shea', '"'$6$nyfuuamcoqakemli$W9nqIQtP8F.ij9TQNjvagmDLoRyJR.j5rcHP4tJumxlJeLR6l8fKFTVXNlTF5U7FI5Sna5gmk2CYBbYx8IqLc0'"', 'b00084432@gmail.com');"
-    #run query
+
     ( mysql -udriveby -pdefender defender -e "${query[${i}]}" )  2>&1 > /dev/null
 
 done

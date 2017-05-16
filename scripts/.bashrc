@@ -137,6 +137,7 @@ if [ -f ${LOG_PATH}.keyboard_flag ]; then
 	    #call get_input.sh
         /usr/local/bin/get_input.sh
     elif  [[ $(head -1 ${LOG_PATH}${FLAG}) == 0 ]] ;then
+        sleep 1
     fi
 fi
 #
@@ -153,7 +154,7 @@ if [ -f ${LOG_PATH}.flash_flag ] ; then
 	    #call get_input.sh
         /usr/local/bin/get_input.sh
     elif  [[ $(head -1 ${LOG_PATH}${FLAG}) == 0 ]] ;then
-             
+        sleep 1        
     fi
 
 fi
