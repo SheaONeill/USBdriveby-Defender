@@ -13,17 +13,17 @@ usb_keyboard () {
 
     #time for the kernel: load drivers    
     sleep 1  
-        
+            
 }
 
 #script imports
-if [ ! -f ${LOG_PATH}.keyboard_details.log ] ; then
+#f [ ! -f ${LOG_PATH}.keyboard_details.log ] ; then
     source /usr/local/bin/export_paths.sh "63-usb-kbd.rules" "keyboard_details.log" "/sys/bus/usb/drivers/usbhid/" ".keyboard_flag"
     source /usr/local/bin/check_interfaces.sh
     source /usr/local/bin/log_details.sh $BASH_SOURCE "Setting_keyboard_paths"
     #call usb_keyboard function
     usb_keyboard
-fi
+#fi
 
 
 

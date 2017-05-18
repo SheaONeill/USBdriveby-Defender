@@ -4,8 +4,8 @@
 #Authors:         Shea O'Neill, Paddy Cronan
 #Date:              20/03/17
 #Version:         1.0
-#Title:               reset_database.sh
-#Description:   This script resets the database
+#Title:              reset_database.sh
+#Description:  This script resets the database
 #----------------------------------------------------------------
 
 for (( i=1; i<=5; i++ ));do
@@ -39,7 +39,8 @@ for (( i=1; i<=5; i++ ));do
             ON DELETE CASCADE,
         time DATETIME NOT NULL DEFAULT NOW()
         );"
-
+    
+    #run query
     ( mysql -udriveby -pdefender defender -e "${query[${i}]}" )  2>&1 > /dev/null
 
 done

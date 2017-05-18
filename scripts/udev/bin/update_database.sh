@@ -4,8 +4,8 @@
 #Authors:         Shea O'Neill, Paddy Cronan
 #Date:              20/03/17
 #Version:         1.0
-#Title:               update_database.sh
-#Description:   This script updates and queries database
+#Title:              update_database.sh
+#Description:  This script updates and queries database
 #------------------------------------------------------------------------------
 
 update_database () {
@@ -14,13 +14,9 @@ update_database () {
     RUNNING=$(pgrep mysql | wc -l)
     if [ "$RUNNING" -eq 0 ]
         then
-            echo -e "\nMySQL is not running"
-            service mysql start
-    else
-        echo -e "\nMySQL is running"
+            service mysql start 
     fi
-    
-
+   
 
     if [ "$1" == "check_database" ]; then
         query_id="SELECT ${vendor_id},${product_id} FROM blacklist WHERE ${vendor_id}='$(<$2${VENDOR_ID})' AND ${product_id}='$(<$2${PRODUCT_ID})';"     
@@ -43,8 +39,7 @@ update_database () {
 
     elif [ "$1" == "check_password" ];then
         query_id="SELECT password FROM user WHERE user_id='$(<$2/$3)';"
-        echo "user id is $(<$2/$3)"
-        
+                
         #run query and save result
         mysql -N -h $host -u $name -p$pass $dbname <<<$query_id >$HOME/.password
 
@@ -53,17 +48,19 @@ update_database () {
         VALUES ('$(<$2${VENDOR_ID})','$(<$2${PRODUCT_ID})','$(<$2${MODEL_ID})');"
         #-N supress column name  
         mysql -N -h $host -u $name -p$pass $dbname <<<$query 
-        
+        clear
         query_id="SELECT ${device_id} FROM blacklist WHERE ${vendor_id}='$(<$2${VENDOR_ID})' AND ${product_id}='$(<$2${PRODUCT_ID})';"
         mysql -N -h $host -u $name -p$pass $dbname <<<$query_id >$2$3
-        
+        clear
         query="INSERT INTO attack_log (device_id,user_id) 
          VALUES ('$(<$2$3)','$(<$HOME/.user_id)');"
         #-N supress column name  
-        mysql -N -h $host -u $name -p$pass $dbname <<<$query    
+        mysql -N -h $host -u $name -p$pass $dbname <<<$query   
+        clear 
     fi
      
 }
 
 #call update_database function
+clear
 update_database $1 $2 $3 $4 $5

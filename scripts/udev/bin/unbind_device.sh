@@ -4,8 +4,8 @@
 #Authors:         Shea O'Neill, Paddy Cronan
 #Date:              20/03/17
 #Version:         1.0
-#Title:               unbind_device.sh
-#Description:   This script disables the device driver
+#Title:              unbind_device.sh
+#Description:  This script disables the device driver
 #------------------------------------------------------------------------
 
 unbind_device () {
@@ -16,8 +16,9 @@ unbind_device () {
     #change to device dir
     cd ${DEVICE_PATH}
     #unbind device
-    echo -n "${DEVICE_DRIVER}" > unbind
+    echo -n "${DEVICE_DRIVER}" > unbind 
+    #clear
 }
 
-#call unbin_device function
+#call unbind_device function
 unbind_device

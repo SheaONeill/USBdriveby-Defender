@@ -21,12 +21,16 @@ check_password () {
     #check against databse
     . /usr/local/bin/update_database.sh "check_password" "${HOME}" ".user_id" 
     if [ "${password}" != "$(<${HOME}/.password)" ];then
-        echo -e "\nWrong Password"
+        #increment counter
+        password_count=$(($password_count+1)); 
+        #echo -e "\nWrong Password $(($password_limit - $password_count)) tries left!" 
+        exit
     else
         echo -e "\nPassword $1 Matches $(<${HOME}/.password)"
         #unset flag        
         echo 0 > ${LOG_PATH}${FLAG}
-    exit 0
+        trap "" 2   
+        exit 0
     fi  
     
 }
@@ -36,4 +40,4 @@ if [ $# -ne $ARGS ];then
 fi
 
 #call encrypt_password function
-check_password $1
+echo check_password $1

@@ -4,9 +4,9 @@
 #Authors:         Shea O'Neill, Paddy Cronan
 #Date:              20/03/17
 #Version:         1.0
-#Title:               usb_flash_udev.sh
-#Description:   This script is run when a USB Flash is inserted
-#Note:              (see 81-usb-flash.rules)
+#Title:              usb_flash_udev.sh
+#Description:  This script is run when a USB Flash is inserted
+#Note:             (see 81-usb-flash.rules)
 #-------------------------------------------------------------------------------------
 
 #script imports

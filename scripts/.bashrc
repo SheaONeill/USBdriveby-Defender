@@ -121,7 +121,7 @@ fi
 if [ -f ~/.bash_driveby_defender ]; then
     . ~/.bash_driveby_defender
 fi
-#
+
 #set the log path variable
 LOG_PATH="/var/log/driveby_defender/"
 
@@ -132,8 +132,6 @@ if [ -f ${LOG_PATH}.keyboard_flag ]; then
     #check to see if flag is set
     if  [[ $(head -1 ${LOG_PATH}${FLAG}) == 1 ]] ;then
         source /usr/local/bin/log_details.sh $BASH_SOURCE "Setting_keyboard_paths"
-        #check database blacklist
-	     /usr/local/bin/check_blacklist.sh               
 	    #call get_input.sh
         /usr/local/bin/get_input.sh
     elif  [[ $(head -1 ${LOG_PATH}${FLAG}) == 0 ]] ;then
@@ -149,8 +147,6 @@ if [ -f ${LOG_PATH}.flash_flag ] ; then
     #check to see if flag is set
     if  [[ $(head -1 ${LOG_PATH}${FLAG}) == 1 ]] ;then
 	    source /usr/local/bin/log_details.sh $BASH_SOURCE "Setting_flash_paths"
-        #check database blacklist
-        /usr/local/bin/check_blacklist.sh       
 	    #call get_input.sh
         /usr/local/bin/get_input.sh
     elif  [[ $(head -1 ${LOG_PATH}${FLAG}) == 0 ]] ;then
@@ -158,6 +154,4 @@ if [ -f ${LOG_PATH}.flash_flag ] ; then
     fi
 
 fi
-#reload rules so change will take affect
-udevadm control --reload-rules && udevadm trigger  
 #--------------------------------------------------------------------------------------

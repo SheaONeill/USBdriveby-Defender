@@ -11,7 +11,6 @@
 #contact_admin
 contact_admin(){
 
- 
     #sendmail
     echo -e "Attack Details\nID: ${user_id}\nDevice ID: ${device_id}" | mail -s "USB Attack " ${email1},${email2} -aFrom:'USBDriveby-Defender<a@a.a>'  -A ${LOG_PATH}${image}
     
