@@ -23,8 +23,8 @@ contact_admin(){
     characters="$(<${LOG_PATH}${CHARACTER_LOG})"
     fi
     ip=$(ip addr list wlan0 | grep "inet " | cut -d' ' -f6 | cut -d/ -f1)
-    email1="b00084432@gmail.com"
-    email2="jamesoneill14@whitehallcollege.com"
+    email1="<enter email here>"
+    email2="<enter email here>"
     image="attacker.jpg"
     #sendmail
     echo -e "Attack Details\nIP Address: $ip\nID: ${user_id}\nDevice ID: ${device_id}\nAttack: ${characters}" | mail -s "USB Attack " ${email1},${email2} -aFrom:'USBDriveby-Defender<a@a.a>'  -A ${LOG_PATH}${image} 
