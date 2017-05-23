@@ -13,10 +13,8 @@
 rules_setup () {
     echo -e "\nPaths To: Local Rules:${LOCAL_RULES_PATH} \nLocal Bin  ${LOCAL_BIN_PATH} \n.bashrc: ${BASHRC_PATH}"
     echo -e "\nPaths From: Rules:${SETUP_RULES_PATH} \nLocal Bin  ${SETUP_BIN_PATH} \n.bashrc: ${PARENTDIR}"
-    ls  ${SETUP_RULES_PATH} ;ls ${SETUP_BIN_PATH};ls ${PARENTDIR}
     echo "Copying ${SETUP_RULES_PATH}* to ${LOCAL_RULES_PATH}}"
     cp "${SETUP_RULES_PATH}"* ${LOCAL_RULES_PATH}
-    ls -la ${LOCAL_RULES_PATH}
     #reload rules: 
     udevadm control --reload-rules
 }
@@ -28,9 +26,8 @@ copy_scripts () {
     #copy all bin scripts from setup to local
     cp "${SETUP_BIN_PATH}"*  ${LOCAL_BIN_PATH}
     ls -la ${LOCAL_BIN_PATH}
-    #maybe edit this to append text to .bashrc
-    cp ${PARENTDIR}.bashrc $HOME
-    ls -la $HOME
+    #append file contentents to .bashrc
+    echo ${PARENTDIR}.bashrc_driveby >> $HOME/.bashrc 
     chmod +x "${LOCAL_BIN_PATH}"*
     ls -la "${LOCAL_BIN_PATH}"
     #create log directory

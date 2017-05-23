@@ -1,13 +1,12 @@
 #!/bin/bash 
 #
 #Application:   USB Driveby Defender
-#Authors:         Shea O'Neill, Paddy Cronan
-#Date:              20/03/17
-#Version:         1.0
-#Title:               get_db_details.sh
+#Authors:       Shea O'Neill, Paddy Cronan
+#Date:          20/03/17
+#Version:       1.0
+#Title:         get_db_details.sh
 #Description:   This script reads user db details
 #------------------------------------------------------------------
-
 
 get_db_details () {
 

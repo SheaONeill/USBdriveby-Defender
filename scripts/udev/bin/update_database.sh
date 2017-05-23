@@ -1,11 +1,11 @@
 #!/bin/bash 
 #
 #Application:   USB Driveby Defender
-#Authors:         Shea O'Neill, Paddy Cronan
-#Date:              20/03/17
-#Version:         1.0
-#Title:              update_database.sh
-#Description:  This script updates and queries database
+#Authors:       Shea O'Neill, Paddy Cronan
+#Date:          20/03/17
+#Version:       1.0
+#Title:         update_database.sh
+#Description:  	This script updates and queries database
 #------------------------------------------------------------------------------
 
 update_database () {
@@ -16,12 +16,18 @@ update_database () {
         then
             service mysql start 
     fi
-   
+    
+    #hardcoded for testing and demo only
+    host="localhost"
+    dbname="defender"
+    device_id="device_id"
+    vendor_id="vendor_id"
+    product_id="product_id"
 
     if [ "$1" == "check_database" ]; then
         query_id="SELECT ${vendor_id},${product_id} FROM blacklist WHERE ${vendor_id}='$(<$2${VENDOR_ID})' AND ${product_id}='$(<$2${PRODUCT_ID})';"     
         #run query and supress column name     
-        mysql -N -h $host -u $name -p$pass $dbname <<<$query_id >$2$3
+        mysql -N -h $host $dbname <<<$query_id >$2$3 
 
     elif [ "$1" == "remove" ];then
         query="DELETE FROM blacklist WHERE ${vendor_id}='$(<$2${VENDOR_ID})' AND ${product_id}='$(<$2${PRODUCT_ID})';"
@@ -30,37 +36,37 @@ update_database () {
          query="INSERT INTO user (username,password,email) 
           VALUES ('$2','$3','$4');"         
          #run query and supress column name  
-         mysql -N -h $host -u $name -p$pass $dbname <<<$query
+         mysql -N -h $host $dbname <<<$query 
 
         query_id="SELECT user_id FROM user WHERE username='$2' AND email='$4';"
         
         #run query and save result
-        mysql -N -h $host -u $name -p$pass $dbname <<<$query_id >$HOME/.user_id
+        mysql -N -h $host $dbname <<<$query_id >$HOME/.user_id 
 
     elif [ "$1" == "check_password" ];then
         query_id="SELECT password FROM user WHERE user_id='$(<$2/$3)';"
                 
         #run query and save result
-        mysql -N -h $host -u $name -p$pass $dbname <<<$query_id >$HOME/.password
+        mysql -N -h $host $dbname <<<$query_id >$HOME/.password 
 
     elif [ "$1" == "add_attack" ];then
         query="INSERT INTO blacklist (vendor_id,product_id,device_type) 
         VALUES ('$(<$2${VENDOR_ID})','$(<$2${PRODUCT_ID})','$(<$2${MODEL_ID})');"
         #-N supress column name  
-        mysql -N -h $host -u $name -p$pass $dbname <<<$query 
-        clear
+        mysql -N -h $host $dbname <<<$query  
+        #clear
         query_id="SELECT ${device_id} FROM blacklist WHERE ${vendor_id}='$(<$2${VENDOR_ID})' AND ${product_id}='$(<$2${PRODUCT_ID})';"
-        mysql -N -h $host -u $name -p$pass $dbname <<<$query_id >$2$3
-        clear
+        mysql -N -h $host $dbname <<<$query_id >$2$3 
+        #clear
         query="INSERT INTO attack_log (device_id,user_id) 
          VALUES ('$(<$2$3)','$(<$HOME/.user_id)');"
         #-N supress column name  
-        mysql -N -h $host -u $name -p$pass $dbname <<<$query   
-        clear 
+        mysql -N -h $host $dbname <<<$query   
+        #clear 
     fi
      
 }
 
 #call update_database function
-clear
-update_database $1 $2 $3 $4 $5
+#clear
+update_database $1 $2 $3 $4 $5 

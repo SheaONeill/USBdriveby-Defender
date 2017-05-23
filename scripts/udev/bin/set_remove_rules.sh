@@ -1,12 +1,12 @@
 #!/bin/bash 
 #
 #Application:   USB Driveby Defender
-#Authors:         Shea O'Neill, Paddy Cronan
-#Date:              20/03/17
-#Version:         1.0
-#Title:              set_remove_rules.sh
-#Description:  This script inserts details in the rules
-#                       this allows triggering on remove
+#Authors:       Shea O'Neill, Paddy Cronan
+#Date:          20/03/17
+#Version:       1.0
+#Title:         set_remove_rules.sh
+#Description:  	This script inserts details in the rules
+#               this allows triggering on remove
 #-----------------------------------------------------------------------------
 
 set_remove_rules () {

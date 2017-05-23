@@ -1,11 +1,11 @@
 #!/bin/bash 
 #
 #Application:   USB Driveby Defender
-#Authors:         Shea O'Neill, Paddy Cronan
-#Date:              20/03/17
-#Version:         1.0
-#Title:              unbind_device.sh
-#Description:  This script disables the device driver
+#Authors:       Shea O'Neill, Paddy Cronan
+#Date:          20/03/17
+#Version:       1.0
+#Title:         unbind_device.sh
+#Description:   This script disables the device driver
 #------------------------------------------------------------------------
 
 unbind_device () {

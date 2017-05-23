@@ -1,13 +1,14 @@
 #!/bin/bash 
 #
 #Application:   USB Driveby Defender
-#Authors:         Shea O'Neill, Paddy Cronan
-#Date:              20/03/17
-#Version:         1.0
-#Title:               check_interfaces.sh
+#Authors:       Shea O'Neill, Paddy Cronan
+#Date:          20/03/17
+#Version:       1.0
+#Title:         check_interfaces.sh
 #Description:   This script checks the description
-#                        of the device inserted and sets flag
+#               of the device inserted and sets flag
 #----------------------------------------------------------------------
+
 check_interfaces () {
 
     #ref: http://serverfault.com/a/126325

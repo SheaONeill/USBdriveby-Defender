@@ -1,11 +1,11 @@
 #!/bin/bash 
 #
 #Application:   USB Driveby Defender
-#Authors:         Shea O'Neill, Paddy Cronan
-#Date:              20/03/17
-#Version:         1.0
-#Title:              lock_down.sh
-#Description:  This script locks the screen
+#Authors:       Shea O'Neill, Paddy Cronan
+#Date:          20/03/17
+#Version:       1.0
+#Title:         lock_down.sh
+#Description:  	This script locks the screen
 #----------------------------------------------------------
 
 lock_down() {

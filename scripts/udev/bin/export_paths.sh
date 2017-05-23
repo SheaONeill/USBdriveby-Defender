@@ -1,11 +1,11 @@
 #!/bin/bash 
 #
 #Application:   USB Driveby Defender
-#Authors:         Shea O'Neill, Paddy Cronan
-#Date:              20/03/17
-#Version:         1.0
-#Title:              export_paths.sh
-#Description:  This script exports paths and filenames
+#Authors:       Shea O'Neill, Paddy Cronan
+#Date:          20/03/17
+#Version:       1.0
+#Title:         export_paths.sh
+#Description:   This script exports paths and filenames
 #---------------------------------------------------------------------------
 
 export_paths () {

@@ -1,13 +1,12 @@
 #!/bin/bash 
 #
 #Application:   USB Driveby Defender
-#Authors:         Shea O'Neill, Paddy Cronan
-#Date:              20/03/17
-#Version:         1.0
-#Title:               check_password.sh
-#Description:   This script hashes password
-#                       and checks against user table
-#-------------------------------------------------------------------------------------
+#Authors:       Shea O'Neill, Paddy Cronan
+#Date:          20/03/17
+#Version:       1.0
+#Title:         enact_countermeasures.sh
+#Description:   This script calls enacts countermeasures during attack 
+#-------------------------------------------------------------------------------------------------
 
 ARGS=1
 #this is for testing and is set in install script
@@ -26,7 +25,6 @@ check_password () {
         #echo -e "\nWrong Password $(($password_limit - $password_count)) tries left!" 
         exit
     else
-        echo -e "\nPassword $1 Matches $(<${HOME}/.password)"
         #unset flag        
         echo 0 > ${LOG_PATH}${FLAG}
         trap "" 2   

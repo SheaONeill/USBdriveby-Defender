@@ -1,10 +1,10 @@
 #!/bin/bash 
 #
 #Application:   USB Driveby Defender
-#Authors:         Shea O'Neill, Paddy Cronan
-#Date:              20/03/17
-#Version:         1.0
-#Title:               usb_device_removed.sh
+#Authors:       Shea O'Neill, Paddy Cronan
+#Date:          20/03/17
+#Version:       1.0
+#Title:         usb_device_removed.sh
 #Description:   This script updates flags on device removal
 #---------------------------------------------------------------------------------
 

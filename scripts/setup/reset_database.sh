@@ -1,11 +1,11 @@
 #!/bin/bash 
 #
 #Application:   USB Driveby Defender
-#Authors:         Shea O'Neill, Paddy Cronan
-#Date:              20/03/17
-#Version:         1.0
-#Title:              reset_database.sh
-#Description:  This script resets the database
+#Authors:       Shea O'Neill, Paddy Cronan
+#Date:          20/03/17
+#Version:       1.0
+#Title:         reset_database.sh
+#Description:   run this script to reset the database
 #----------------------------------------------------------------
 
 for (( i=1; i<=5; i++ ));do
@@ -41,6 +41,6 @@ for (( i=1; i<=5; i++ ));do
         );"
     
     #run query
-    ( mysql -udriveby -pdefender defender -e "${query[${i}]}" )  2>&1 > /dev/null
+    ( mysql defender -e "${query[${i}]}" )  2>&1 > /dev/null
 
 done

@@ -1,13 +1,13 @@
 #!/bin/bash 
 #
 #Application:   USB Driveby Defender
-#Authors:         Shea O'Neill, Paddy Cronan
-#Date:              20/03/17
-#Version:         1.0
-#Title:              usb_flash_udev.sh
-#Description:  This script is run when a USB Flash is inserted
-#Note:             (see 81-usb-flash.rules)
-#-------------------------------------------------------------------------------------
+#Authors:       Shea O'Neill, Paddy Cronan
+#Date:          20/03/17
+#Version:       1.0
+#Title:         usb_flash_udev.sh
+#Description:  	This script is run when a USB Flash is inserted
+#Note:          (see 81-usb-flash.rules)
+#---------------------------------------------------------------------------------
 
 #script imports
 source /usr/local/bin/export_paths.sh "81-usb-flash.rules" "flash_details.log" "/sys/bus/usb/drivers/usb-storage/" ".flash_flag"

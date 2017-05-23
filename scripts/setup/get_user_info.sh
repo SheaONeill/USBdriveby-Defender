@@ -1,11 +1,11 @@
 #!/bin/bash 
 #
 #Application:   USB Driveby Defender
-#Authors:         Shea O'Neill, Paddy Cronan
-#Date:              20/03/17
-#Version:         1.0
-#Title:              get_user_info.sh
-#Description:  This script gets all user info for configurations
+#Authors:       Shea O'Neill, Paddy Cronan
+#Date:          20/03/17
+#Version:       1.0
+#Title:         get_user_info.sh
+#Description:  	This script gets all user info for configurations
 #-------------------------------------------------------------------------------------
 
 get_user_info () {

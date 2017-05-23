@@ -1,13 +1,12 @@
 #!/bin/bash 
 #
 #Application:   USB Driveby Defender
-#Authors:         Shea O'Neill, Paddy Cronan
-#Date:              20/03/17
-#Version:         1.0
-#Title:               dbsetup
+#Authors:       Shea O'Neill, Paddy Cronan
+#Date:          20/03/17
+#Version:       1.0
+#Title:         dbsetup
 #Description:   This script creates the database
 #-------------------------------------------------------------------------
-
 
 #expect 4 arguments  
 ARGS=4
