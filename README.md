@@ -3,7 +3,7 @@
 
 # OVERVIEW
 
-This is a third year project/thesis for cyber security /digital forensics. `Work in Progress` <br />
+This is a third year project/thesis for cyber security /digital forensics.<br />
 A Shell script/Security Application (This Is to Guard Against Attackers, cyber espionage that have physical access to system) that will auto-run/execute when an unknown USB device is inserted into a Linux/Unix based operating system. The script scans the device to find hardware ID’s to compare against known blacklisted devices from a database and adds the device if necessary. Logs attacks with details of vendor and product id's of device, which username the attack was perfomed on and a description of the attack vector. Kill all processes that could possibly allow device to run malicious payloads or possible keyboard emulation  Once the script is running to exit from it using Ctrl+C the user must authenticate themselves using a password. Failing authentication the system admins will be notified via text message/email to inform them of intrusion attempt, and the system will be locked down. Meanwhile the script shall gather as much information from the device, and log all details for uploading to server  for further investigation. 
 
 # GOALS:
@@ -29,7 +29,6 @@ execute install.sh `./install.sh` and follow instrucions.
 The database script expects four arguments `$host $dbname $name $pass` <br />
 e.g. `[ <ip-address> | <localhost> ] <database_name> <name> <pass>` localhost defender hackme letmein etc.<br />
 host must be accurate all other values will be created and db grant permissions will accomadate.<br />
-(TODO give option to install bc if not found).
 
 While concentrating on all keyboard input, and after reseaching known  BAD USB/Rubber Duckky linux/unix attacks,
 Our finding where that attacks seem to stem from `<alt><f2>` or `<ctrl><alt><t>` which in a nutshell opens a terminal or 
