@@ -1,5 +1,5 @@
 # USBdriveby-Defender
-[SheaONeill] http://Shea.ie [PaddyOTG] 
+[SheaONeill] http://Shea.ie [paddycronan] 
 
 # OVERVIEW
 
